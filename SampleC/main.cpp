@@ -28,7 +28,7 @@ void MemoryLeakTest()
     // ヒープ領域に動的確保して、Weapon を作成
     Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
     std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
-    //delete droppedWeapon; // メモリ開放
+    //delete droppedWeapon; // メモリ開放処理
 
 }
 
@@ -51,14 +51,7 @@ void DumplingPointerTest()
 
 int main()
 {
-    while (true)
-    {
-        MemoryLeakTest();
-    }
-
-
     //DumplingPointerTest();
-
 
     return 0;
 }
