@@ -60,7 +60,8 @@ void SmartPointerTest()
     // Blade が消滅するとき、Weapon も delete される
     std::unique_ptr<Weapon> Blade = std::make_unique<Weapon>("日本刀", 10);
 
-    // Weapon* を受け取る想定嘉数なので、get() でアドレスを渡す
+    // Weapon* というポインタを受け取る想定の変数であれば、get() でアドレスを渡す
+    // ※ std::unique_ptr<Weapon> というスマートポインタで定義されている変数なら、move()で所有権を受け渡すとよい。
     Hero.EquipWeaponWithSmartPointer(std::move(Blade));
     Hero.Attack(Slime);
 

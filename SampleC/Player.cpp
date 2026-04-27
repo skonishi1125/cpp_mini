@@ -18,7 +18,6 @@ void Player::EquipWeaponWithSmartPointer(std::unique_ptr<Weapon> NewWeapon)
 {
 	EquippedWeaponWithSmartPointer = std::move(NewWeapon);
 	std::cout << Name << "は [" << EquippedWeaponWithSmartPointer->GetName() << "] を装備しました。(with smart pointer) \n";
-
 }
 
 void Player::TakeDamage(int Damage)
