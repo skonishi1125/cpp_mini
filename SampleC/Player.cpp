@@ -14,6 +14,13 @@ void Player::EquipWeapon(Weapon* NewWeapon)
 	std::cout << Name << "は [" << EquippedWeapon->GetName() << "] を装備しました。\n";
 }
 
+void Player::EquipWeaponWithSmartPointer(std::unique_ptr<Weapon> NewWeapon)
+{
+	EquippedWeaponWithSmartPointer = std::move(NewWeapon);
+	std::cout << Name << "は [" << EquippedWeaponWithSmartPointer->GetName() << "] を装備しました。(with smart pointer) \n";
+
+}
+
 void Player::TakeDamage(int Damage)
 {
 	Hp -= Damage;
@@ -29,9 +36,9 @@ void Player::Attack(Player& Target)
 	int BarehandedDamage = 3;
 	int TotalDamage = BarehandedDamage;
 
-	if (EquippedWeapon != nullptr)
+	if (EquippedWeaponWithSmartPointer != nullptr)
 	{
-		TotalDamage += EquippedWeapon->GetAttackPower();
+		TotalDamage += EquippedWeaponWithSmartPointer->GetAttackPower();
 	}
 
 	Target.TakeDamage(TotalDamage);

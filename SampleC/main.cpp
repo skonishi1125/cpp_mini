@@ -61,7 +61,7 @@ void SmartPointerTest()
     std::unique_ptr<Weapon> Blade = std::make_unique<Weapon>("日本刀", 10);
 
     // Weapon* を受け取る想定嘉数なので、get() でアドレスを渡す
-    Hero.EquipWeapon(Blade.get());
+    Hero.EquipWeaponWithSmartPointer(std::move(Blade));
     Hero.Attack(Slime);
 
     // 処理終了と同時に Blade は自身の持つメモリを delete で解放
