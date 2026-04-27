@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <memory>
 #include "Weapon.h"
 #include "Player.h"
 
@@ -45,13 +46,30 @@ void DumplingPointerTest()
     delete MagicSword; // 武器をdeleteして、格納先のメモリを解放
 
     Hero.Attack(Slime); // 勇者の装備している剣のアドレスは解放されているが、そちらで攻撃を試みる
+}
 
+void SmartPointerTest()
+{
+    std::cout << "--- スマートポインタ ---\n";
 
+    Player Hero("勇者", 100);
+    Player Slime("スライム", 30);
+
+    // スマートポインタを使った形での実装
+    // ヒープ に Weapon を作成し、Ownership を Blade という変数に持たせる
+    // Blade が消滅するとき、Weapon も delete される
+    std::unique_ptr<Weapon> Blade = std::make_unique<Weapon>("日本刀", 10);
+
+    // Weapon* を受け取る想定嘉数なので、get() でアドレスを渡す
+    Hero.EquipWeapon(Blade.get());
+    Hero.Attack(Slime);
+
+    // 処理終了と同時に Blade は自身の持つメモリを delete で解放
 }
 
 int main()
 {
-    //DumplingPointerTest();
+    SmartPointerTest();
 
     return 0;
 }
