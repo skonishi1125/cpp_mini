@@ -3,6 +3,8 @@
 #include "Weapon.h"
 #include "Player.h"
 #include "WoodBox.h"
+#include "Monster.h"
+#include "Slime.h"
 
 // 関数系は main() よりも手前に書かなければ認識されない
 void DisplayWeapon()
@@ -85,8 +87,21 @@ void InterfaceTest()
     Hero.Attack(Box);
 }
 
+void VirtualTest()
+{
+    std::cout << "--- virtual の実験 ---\n";
+
+    // スライムを生成し親クラスの参照として受け取るケース（Slime を Moster として扱う）
+    Slime MySlime;
+    Monster& TargetMonster = MySlime;
+
+    TargetMonster.NormalAttack();
+    TargetMonster.MagicAttack();
+}
+
 int main()
 {
-    InterfaceTest();
+    VirtualTest();
+
     return 0;
 }
