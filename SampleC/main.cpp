@@ -2,6 +2,7 @@
 #include <memory>
 #include "Weapon.h"
 #include "Player.h"
+#include "WoodBox.h"
 
 // 関数系は main() よりも手前に書かなければ認識されない
 void DisplayWeapon()
@@ -68,9 +69,24 @@ void SmartPointerTest()
     // 処理終了と同時に Blade は自身の持つメモリを delete で解放
 }
 
+void InterfaceTest()
+{
+    std::cout << "--- インターフェース動作確認 ---\n";
+
+    Player Hero("勇者", 100);
+    Player Slime("スライム", 30);
+    WoodBox Box;
+
+    std::unique_ptr<Weapon> Sword = std::make_unique<Weapon>("鉄の剣", 15);
+    Hero.EquipWeaponWithSmartPointer(std::move(Sword));
+
+    // Slime, Box 個別のインターフェースを取り出して処理
+    Hero.Attack(Slime);
+    Hero.Attack(Box);
+}
+
 int main()
 {
-    SmartPointerTest();
-
+    InterfaceTest();
     return 0;
 }

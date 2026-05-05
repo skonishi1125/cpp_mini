@@ -1,5 +1,6 @@
 ﻿#include "Player.h"
 #include "Weapon.h"
+
 #include <iostream>
 
 Player::Player(std::string InitName, int InitHp) : Name(InitName), Hp(InitHp)
@@ -28,7 +29,7 @@ void Player::TakeDamage(int Damage)
 }
 
 // 攻撃対象のメモリアドレスを受け取り、そのアドレスにいる実体のインスタンスに対して処理を行う
-void Player::Attack(Player& Target)
+void Player::Attack(IDamageable& Target)
 {
 	std::cout << Name << " の攻撃！\n";
 
@@ -40,6 +41,7 @@ void Player::Attack(Player& Target)
 		TotalDamage += EquippedWeaponWithSmartPointer->GetAttackPower();
 	}
 
+	// 相手の持つ Interface を呼んで、Player / 敵 / 木箱など に対して個別処理をする
 	Target.TakeDamage(TotalDamage);
 }
 

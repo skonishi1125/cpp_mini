@@ -1,10 +1,13 @@
 ﻿#pragma once
+
+#include "IDamageable.h"
+
 #include <string>
 #include <memory>
 
 class Weapon; // 前方宣言
 
-class Player
+class Player : public IDamageable // TODO: この public について調べる
 {
 private:
 	std::string Name;
@@ -20,8 +23,8 @@ public:
 
 	void EquipWeaponWithSmartPointer(std::unique_ptr<Weapon> NewWeapon);
 
-	void Attack(Player& Target);
+	void Attack(IDamageable& Target);
 
-	void TakeDamage(int Damage);
+	void TakeDamage(int Damage) override;
 
 };

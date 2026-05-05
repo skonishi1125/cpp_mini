@@ -128,8 +128,10 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IDamageable.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WoodBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
