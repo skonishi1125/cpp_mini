@@ -36,6 +36,22 @@ void Player::Attack(IDamageable& Target)
 	int BarehandedDamage = 3;
 	int TotalDamage = BarehandedDamage;
 
+	if (EquippedWeapon != nullptr)
+	{
+		TotalDamage += EquippedWeapon->GetAttackPower();
+	}
+
+	// 相手の持つ Interface を呼んで、Player / 敵 / 木箱など に対して個別処理をする
+	Target.TakeDamage(TotalDamage);
+}
+
+void Player::AttackWithSmartPointer(IDamageable& Target)
+{
+	std::cout << Name << " の攻撃！\n";
+
+	int BarehandedDamage = 3;
+	int TotalDamage = BarehandedDamage;
+
 	if (EquippedWeaponWithSmartPointer != nullptr)
 	{
 		TotalDamage += EquippedWeaponWithSmartPointer->GetAttackPower();

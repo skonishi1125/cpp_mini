@@ -30,13 +30,21 @@ void AttackSlime()
 void MemoryLeakTest()
 {
     // ヒープ領域に動的確保して、Weapon を作成
-    Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
-    std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
+    // delete を付与していないため、タスクマネージャーから SampleC.exe を開くとメモリが溜まっていくことが分かる
+    while (true)
+    {
+        Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
+        std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
+    }
+
+    //Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
+    //std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
     //delete droppedWeapon; // メモリ開放処理
 
 }
 
-void DumplingPointerTest()
+
+void DumglingPointerTest()
 {
     std::cout << "--- ダングリングポインタ実験 開始 ---\n";
 
@@ -46,6 +54,7 @@ void DumplingPointerTest()
     Weapon* MagicSword = new Weapon("魔法剣", 30);
     Hero.EquipWeapon(MagicSword);
 
+    std::cout << "--- 武器ポインタのメモリを開放 ---\n";
     delete MagicSword; // 武器をdeleteして、格納先のメモリを解放
 
     Hero.Attack(Slime); // 勇者の装備している剣のアドレスは解放されているが、そちらで攻撃を試みる
@@ -101,7 +110,8 @@ void VirtualTest()
 
 int main()
 {
-    VirtualTest();
+    DumglingPointerTest();
+    //VirtualTest();
 
     return 0;
 }

@@ -25,6 +25,9 @@ public:
 
 	void Attack(IDamageable& Target);
 
+	void AttackWithSmartPointer(IDamageable& Target);
+
+
 	void TakeDamage(int Damage) override;
 
 };
