@@ -101,11 +101,11 @@ void VirtualTest()
     std::cout << "--- virtual の実験 ---\n";
 
     // スライムを生成し親クラスの参照として受け取るケース（Slime を Moster として扱う）
-    Slime MySlime;
-    Monster& TargetMonster = MySlime;
+    //Slime MySlime("スライム", 30);
+    //Monster& TargetMonster = MySlime;
 
-    TargetMonster.NormalAttack();
-    TargetMonster.MagicAttack();
+    //TargetMonster.NormalAttack();
+    //TargetMonster.MagicAttack();
 }
 
 int main()

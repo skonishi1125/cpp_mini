@@ -5,7 +5,12 @@
 
 Player::Player(std::string InitName, int InitHp) : Name(InitName), Hp(InitHp)
 {
+	std::cout << "Playerクラス コンストラクタ\n";
+}
 
+Player::~Player()
+{
+	std::cout << "Playerクラス デストラクタ\n";
 }
 
 // メモリアドレスを受け取り、そちらで処理をする

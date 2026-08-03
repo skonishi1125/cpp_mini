@@ -5,19 +5,13 @@
 #include <string>
 #include <memory>
 
-class Weapon; // 前方宣言
+class Weapon;
 
-class Player : public IDamageable // TODO: この public について調べる
+class Player : public IDamageable
 {
-private:
-	std::string Name;
-	int Hp;
-
-	Weapon* EquippedWeapon;
-	std::unique_ptr<Weapon> EquippedWeaponWithSmartPointer;
-
 public:
 	Player(std::string InitName, int InitHp);
+	~Player();
 
 	void EquipWeapon(Weapon* NewWeapon);
 
@@ -27,7 +21,12 @@ public:
 
 	void AttackWithSmartPointer(IDamageable& Target);
 
-
 	void TakeDamage(int Damage) override;
 
+private:
+	std::string Name;
+	int Hp;
+
+	Weapon* EquippedWeapon;
+	std::unique_ptr<Weapon> EquippedWeaponWithSmartPointer;
 };
