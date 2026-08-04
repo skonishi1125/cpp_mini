@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 //#include <memory>
+#include "Entities/Entity.h"
 
 // 関数系は main() よりも手前に書かなければ認識されない
 //void DisplayWeapon()
@@ -103,13 +104,18 @@
 //    //TargetMonster.MagicAttack();
 //}
 
+void SetUpEntity()
+{
+    Entity* pEntity = new Entity("pエンティティ", 25); // heap への定義
+    Entity Entity("エンティティ", 30); // stack への定義
+}
+
 int main()
 {
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
-
-
     std::cout << "Completed Orgamize folders!" << std::endl;
 
+    SetUpEntity();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;

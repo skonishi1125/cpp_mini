@@ -19,6 +19,9 @@
     <ClInclude Include="Items\WoodBox.h">
       <Filter>Items</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\Entity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="Items\Weapon.cpp">
       <Filter>Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Entity.cpp">
+      <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
