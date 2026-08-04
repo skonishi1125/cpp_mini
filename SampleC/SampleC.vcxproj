@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\IDamageable.h" />
+    <ClInclude Include="Entities\Monster.h" />
+    <ClInclude Include="Entities\Player.h" />
+    <ClInclude Include="Entities\Slime.h" />
+    <ClInclude Include="Items\Weapon.h" />
+    <ClInclude Include="Items\WoodBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Entities\Monster.cpp" />
+    <ClCompile Include="Entities\Player.cpp" />
+    <ClCompile Include="Entities\Slime.cpp" />
+    <ClCompile Include="Items\Weapon.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -122,21 +137,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Slime.cpp" />
-    <ClCompile Include="Weapon.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="IDamageable.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Slime.h" />
-    <ClInclude Include="Weapon.h" />
-    <ClInclude Include="WoodBox.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
