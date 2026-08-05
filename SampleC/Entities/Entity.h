@@ -13,8 +13,13 @@ public:
 	// Interface IDamageable
 	void TakeDamage(int Damage) override;
 
-private:
+protected:
+	// Name は xx のダメージ というようにログを出したい場合は、子クラスで参照できるように調整する必要がある
+	// そういったものは protected で適宜管理する。
+	// イメージとしては、private に書いて不都合があれば protected に移行していく感じ
 	std::string Name;
-	int MaxHp;
 	int CurrentHp;
+	int MaxHp;
+
+private:
 };

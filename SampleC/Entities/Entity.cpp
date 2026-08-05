@@ -11,4 +11,8 @@ Entity::Entity(const std::string& InitName, int InitHp) : Name(InitName), MaxHp(
 void Entity::TakeDamage(int Damage)
 {
 	std::cout << "Called Entity::TakeDamage(int Damage)" << std::endl;
+	CurrentHp -= Damage;
+
+	if (CurrentHp < 0) CurrentHp = 0;
+
 }

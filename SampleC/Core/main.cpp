@@ -110,12 +110,25 @@ void SetUpEntity()
 {
     Entity* pEntity = new Entity("pエンティティ", 25); // heap への定義
     Entity MyEntity("エンティティ", 30); // stack への定義
+}
 
+void GenerateCharacters()
+{
+    // TODO: ここで Player, Monster を heap に作って、それを別関数で使っていく
+    // ダメージとか攻撃定義とか武器装備とかさせたい
+}
+
+void CheckInheritance()
+{
     Player MyPlayer("プレイヤー", 100);
-    MyPlayer.TakeDamage(100);
+    MyPlayer.TakeDamage(20);
+    MyPlayer.TakeDamage(79);
+    MyPlayer.TakeDamage(5);
 
     Monster MyMonster("モンスター", 99);
     MyMonster.TakeDamage(30);
+    MyMonster.TakeDamage(90);
+
 }
 
 int main()
@@ -123,7 +136,8 @@ int main()
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
     std::cout << "Completed Orgamize folders!" << std::endl;
 
-    SetUpEntity();
+    // SetUpEntity();
+    CheckInheritance();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;

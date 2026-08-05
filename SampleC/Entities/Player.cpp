@@ -9,6 +9,20 @@ Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitH
 	std::cout << "Player Constructor" << std::endl;
 }
 
+void Player::TakeDamage(int Damage)
+{
+	// Pure C++ には Super:: とか Parent:: とかそういったキーワードは無い
+	Entity::TakeDamage(Damage);
+
+	std::cout << Name << " は " << Damage << " のダメージを受けた！ (残りHP: " << CurrentHp << ")\n";
+
+	if (CurrentHp <= 0)
+	{
+		std::cout << Name << " は " << "死んでしまった！\n";
+	}
+
+}
+
 //Player::~Player()
 //{
 //	std::cout << "Playerクラス デストラクタ\n";
@@ -27,12 +41,7 @@ Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitH
 //	std::cout << Name << "は [" << EquippedWeaponWithSmartPointer->GetName() << "] を装備しました。(with smart pointer) \n";
 //}
 //
-//void Player::TakeDamage(int Damage)
-//{
-//	Hp -= Damage;
-//	std::cout << Name << " は " << Damage << " のダメージを受けた！ (残りHP: " << Hp << ")\n\n";
-//
-//}
+
 //
 //// 攻撃対象のメモリアドレスを受け取り、そのアドレスにいる実体のインスタンスに対して処理を行う
 //void Player::Attack(IDamageable& Target)

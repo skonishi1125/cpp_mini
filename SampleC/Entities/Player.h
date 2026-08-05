@@ -12,6 +12,9 @@ public:
 	// 引数を持つコンストラクタを用意して、.cpp 側でパラメータを親に渡すという設計になる
 	Player(const std::string& InitName, int InitHp);
 
+	void TakeDamage(int Damage) override;
+
+
 	//~Player();
 
 	//void EquipWeapon(Weapon* NewWeapon);
@@ -22,7 +25,6 @@ public:
 
 	//void AttackWithSmartPointer(IDamageable& Target);
 
-	//void TakeDamage(int Damage) override;
 
 private:
 	//std::string Name;

@@ -5,17 +5,21 @@ Monster::Monster(const std::string& InitName, int InitHp) : Entity(InitName, Ini
 {
 	std::cout << "Monster Constructor" << std::endl;
 }
-//
-//Monster::~Monster()
-//{
-//}
-//
-//void Monster::TakeDamage(int Damage)
-//{
-//	Hp -= Damage;
-//	std::cout << Name << " は " << Damage << " のダメージを受けた！ (残りHP: " << Hp << ")\n\n";
-//}
-//
+
+void Monster::TakeDamage(int Damage)
+{
+	Entity::TakeDamage(Damage);
+
+	std::cout << Name << " に " << Damage << " のダメージ！ (残りHP: " << CurrentHp << ")\n";
+
+	if (CurrentHp <= 0)
+	{
+		std::cout << Name << " を " << "たおした！\n";
+		// TODO: 経験値処理など
+	}
+}
+
+
 //void Monster::NormalAttack()
 //{
 //	std::cout << "モンスター の通常攻撃！\n";
