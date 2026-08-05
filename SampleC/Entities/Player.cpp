@@ -1,13 +1,14 @@
-﻿//#include "Player.h"
+﻿#include <iostream>
+
+#include "Player.h"
 //#include "Weapon.h"
-//
-//#include <iostream>
-//
-//Player::Player(std::string InitName, int InitHp) : Name(InitName), Hp(InitHp)
-//{
-//	std::cout << "Playerクラス コンストラクタ\n";
-//}
-//
+
+
+Player::Player()
+{
+	std::cout << "Playerクラス コンストラクタ\n";
+}
+
 //Player::~Player()
 //{
 //	std::cout << "Playerクラス デストラクタ\n";

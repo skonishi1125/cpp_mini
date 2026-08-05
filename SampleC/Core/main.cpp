@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 //#include <memory>
 #include "Entities/Entity.h"
+#include "Entities/Player.h"
 
 // 関数系は main() よりも手前に書かなければ認識されない
 //void DisplayWeapon()
