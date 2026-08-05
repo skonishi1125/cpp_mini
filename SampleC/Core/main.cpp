@@ -108,7 +108,11 @@
 void SetUpEntity()
 {
     Entity* pEntity = new Entity("pエンティティ", 25); // heap への定義
-    Entity Entity("エンティティ", 30); // stack への定義
+    Entity MyEntity("エンティティ", 30); // stack への定義
+
+    Player MyPlayer("プレイヤー", 100);
+    MyPlayer.TakeDamage(100);
+
 }
 
 int main()

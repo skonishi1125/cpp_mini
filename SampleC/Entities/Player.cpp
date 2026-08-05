@@ -4,9 +4,9 @@
 //#include "Weapon.h"
 
 
-Player::Player()
+Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
 {
-	std::cout << "Playerクラス コンストラクタ\n";
+	std::cout << "Player Constructor" << std::endl;
 }
 
 //Player::~Player()
@@ -67,3 +67,4 @@ Player::Player()
 //	Target.TakeDamage(TotalDamage);
 //}
 //
+

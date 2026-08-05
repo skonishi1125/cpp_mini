@@ -1,14 +1,16 @@
 ﻿#pragma once
 
-#include "Core/IDamageable.h"
+#include "Entities/Entity.h"
 
 #include <string>
 //#include <memory>
 
-class Player : public IDamageable
+class Player : public Entity
 {
 public:
-	Player();
+	// 子クラスの実装と、親への引数の渡し方
+	// 引数を持つコンストラクタを用意して、.cpp 側でパラメータを親に渡すという設計になる
+	Player(const std::string& InitName, int InitHp);
 	//~Player();
 
 	//void EquipWeapon(Weapon* NewWeapon);
