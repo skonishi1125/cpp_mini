@@ -1,21 +1,20 @@
-﻿//#pragma once
-//
-//#include "IDamageable.h"
-//
+﻿#pragma once
+
+#include "Entities/Entity.h"
+
 //#include <string> // std::string
-//
-//class Monster : public IDamageable
-//{
-//public:
-//	Monster(std::string InitName, int InitHp);
-//	~Monster();
-//
-//	void TakeDamage(int Damage);
-//
-//	void NormalAttack();
-//	virtual void MagicAttack();
-//
+
+class Monster : public Entity
+{
+public:
+	Monster(const std::string& InitName, int InitHp);
+
+	//void TakeDamage(int Damage);
+
+	//void NormalAttack();
+	//virtual void MagicAttack();
+
 //private:
 //	std::string Name;
 //	int Hp;
-//};
+};

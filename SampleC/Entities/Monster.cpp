@@ -1,10 +1,10 @@
-﻿//#include "Monster.h"
-//
-//#include <iostream>
-//
-//Monster::Monster(std::string InitName, int InitHp) : Name(InitName), Hp(InitHp)
-//{
-//}
+﻿#include <iostream>
+#include "Monster.h"
+
+Monster::Monster(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
+{
+	std::cout << "Monster Constructor" << std::endl;
+}
 //
 //Monster::~Monster()
 //{

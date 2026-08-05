@@ -2,9 +2,10 @@
 
 #include "Entity.h"
 
-Entity::Entity(const std::string& InitName, int InitHp) : Name(InitName), Hp(InitHp)
+Entity::Entity(const std::string& InitName, int InitHp) : Name(InitName), MaxHp(InitHp)
 {
 	std::cout << "Exec Entity() Constructor. Name: " << InitName << " HP: " << InitHp << std::endl;
+	CurrentHp = MaxHp;
 }
 
 void Entity::TakeDamage(int Damage)

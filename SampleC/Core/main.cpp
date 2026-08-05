@@ -2,6 +2,7 @@
 //#include <memory>
 #include "Entities/Entity.h"
 #include "Entities/Player.h"
+#include "Entities/Monster.h"
 
 // 関数系は main() よりも手前に書かなければ認識されない
 //void DisplayWeapon()
@@ -113,6 +114,8 @@ void SetUpEntity()
     Player MyPlayer("プレイヤー", 100);
     MyPlayer.TakeDamage(100);
 
+    Monster MyMonster("モンスター", 99);
+    MyMonster.TakeDamage(30);
 }
 
 int main()

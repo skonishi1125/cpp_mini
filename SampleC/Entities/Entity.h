@@ -15,5 +15,6 @@ public:
 
 private:
 	std::string Name;
-	int Hp;
+	int MaxHp;
+	int CurrentHp;
 };
