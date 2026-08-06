@@ -112,12 +112,6 @@ void SetUpEntity()
     Entity MyEntity("エンティティ", 30); // stack への定義
 }
 
-void GenerateCharacters()
-{
-    // TODO: ここで Player, Monster を heap に作って、それを別関数で使っていく
-    // ダメージとか攻撃定義とか武器装備とかさせたい
-}
-
 void CheckInheritance()
 {
     Player MyPlayer("プレイヤー", 100);
@@ -128,7 +122,48 @@ void CheckInheritance()
     Monster MyMonster("モンスター", 99);
     MyMonster.TakeDamage(30);
     MyMonster.TakeDamage(90);
+}
 
+// スタックに Player を生成して、そのオブジェクトを返す
+// スタックは } の後すぐに破棄されることになるので、
+// 呼び出し元のスタック領域に強引にコピーして、元となった実体を破棄するような挙動になる
+// また、別のケースで Entity 型で Player を返す際に値渡しとした場合、
+// 子クラスのデータがそぎ落とされて親クラスの部分だけがコピーされる現象が起きるケースもある （Object Slicing）
+//
+// そのため、Object はポインタを使ってアドレスで受け渡すのが基本。この関数は好ましくない
+Player GenerateHeroOnStack()
+{
+    Player StackPlayer("スタック", 100);
+    return StackPlayer;
+}
+
+// ヒープに Player を生成して、そのアドレスを返す
+Player* GenerateHeroOnHeap()
+{
+    Player* pNewPlayer = new Player("ヒープ", 100);
+    return pNewPlayer;
+}
+
+// PHP などでは関数にオブジェクトを渡すと、暗黙的に参照を渡してくれる
+// C++ に関しては、* や & を付与せず渡すと、全く新しいコピーを渡すというルールが働く
+// そのため、この関数では元の TargetPlayer(StackHero) のコピーを処理することになる
+// ダメージを減らす処理をしているが、
+// * 無傷のオリジナルからコピーを作って
+// * コピーの体力を減らす
+// という処理になり、元のオリジナルの体力を減らしたりすることができない。
+void ProcessBattleUsingStack(Player TargetPlayer)
+{
+    std::cout << "--- 戦闘開始 ---\n";
+    TargetPlayer.TakeDamage(20);
+}
+
+void ProcessBattleUsingHeap(Player* TargetPlayer)
+{
+    if (TargetPlayer != nullptr)
+    {
+        std::cout << "-- 戦闘開始 ---\n";
+        TargetPlayer->TakeDamage(20);
+    }
 }
 
 int main()
@@ -137,7 +172,22 @@ int main()
     std::cout << "Completed Orgamize folders!" << std::endl;
 
     // SetUpEntity();
-    CheckInheritance();
+    //CheckInheritance();
+
+    Player StackHero = GenerateHeroOnStack();
+    ProcessBattleUsingStack(StackHero);
+    ProcessBattleUsingStack(StackHero);
+
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+
+
+    Player* HeapHero = GenerateHeroOnHeap();
+    ProcessBattleUsingHeap(HeapHero);
+    ProcessBattleUsingHeap(HeapHero);
+    delete HeapHero;
+    HeapHero = nullptr;
+
+
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;
