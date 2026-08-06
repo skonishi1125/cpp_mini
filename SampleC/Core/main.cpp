@@ -157,6 +157,14 @@ void ProcessBattleUsingStack(Player TargetPlayer)
     TargetPlayer.TakeDamage(20);
 }
 
+// Object の実体を関数に渡すケース（参照渡し）
+// PHP などの暗黙的な参照の形と近い挙動になる
+void ProcessBattleUsingReference(Player& TargetPlayer)
+{
+    std::cout << "--- 戦闘開始 ---\n";
+    TargetPlayer.TakeDamage(20);
+}
+
 void ProcessBattleUsingHeap(Player* TargetPlayer)
 {
     if (TargetPlayer != nullptr)
@@ -179,8 +187,12 @@ int main()
     ProcessBattleUsingStack(StackHero);
 
     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    // 参照
+    ProcessBattleUsingReference(StackHero);
+    ProcessBattleUsingReference(StackHero);
 
-
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    // Pointer
     Player* HeapHero = GenerateHeroOnHeap();
     ProcessBattleUsingHeap(HeapHero);
     ProcessBattleUsingHeap(HeapHero);
