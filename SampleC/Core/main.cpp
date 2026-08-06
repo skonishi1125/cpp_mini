@@ -239,19 +239,62 @@ void VectorManagementTest()
 
 }
 
+// ======================
+// 引数の渡し方関連の検証
+// ======================
+void FuncByValue(Player TargetPlayer)
+{
+    std::cout << TargetPlayer.GetPlayerName() << std::endl;
+}
+
+void FuncByPointer(Player* p_p)
+{
+
+    std::cout << p_p->GetPlayerName() << std::endl;
+}
+
+void FuncByReference(Player& p_ref)
+{
+    std::cout << p_ref.GetPlayerName() << std::endl;
+}
+
+void FuncByPointerAndReference(Player*& p_pointer_and_ref)
+{
+    std::cout << p_pointer_and_ref->GetPlayerName() << std::endl;
+}
+
+void TestingHowToPassFunctions()
+{
+    // 値渡し
+    Player MyPlayer_Value = Player("値渡し", 100);
+    FuncByValue(MyPlayer_Value);
+
+    // ポインタ渡し
+    Player MyPlayer_Pointer = Player("ポインタ渡し", 100); // これ自体は、値で作っている
+    Player* PointerPlayer = &MyPlayer_Pointer; // 値で作ったデータを & でポインタだけ格納
+    Player** DoublePointerPlayer = &PointerPlayer;
+    FuncByPointer(PointerPlayer);
+    FuncByPointer(*DoublePointerPlayer); // ダブルポインタは、* つけることで実体へのポインタを呼べる（デリファレンス）
+
+    // 参照渡し
+    Player MyPlayer_Reference = Player("参照渡し", 200);
+    FuncByReference(MyPlayer_Reference);
+
+    // ポインタ参照渡し
+    Player* MyPlayer_Pointer_2 = new Player("ポインタPlayer", 99);
+    FuncByPointerAndReference(MyPlayer_Pointer_2);
+    delete MyPlayer_Pointer_2;
+    MyPlayer_Pointer_2 = nullptr;
+}
+
+// ======================
+
 int main()
 {
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
     std::cout << "Completed Orgamize folders!" << std::endl;
 
-    // SetUpEntity();
-    //CheckInheritance();
-
-    //CheckBehaviorForEachCall();
-
-    VectorManagementTest();
-
-
+    TestingHowToPassFunctions();
 
 
 

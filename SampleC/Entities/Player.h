@@ -12,6 +12,7 @@ public:
 	// 引数を持つコンストラクタを用意して、.cpp 側でパラメータを親に渡すという設計になる
 	Player(const std::string& InitName, int InitHp);
 
+	const std::string GetPlayerName() { return Name; }
 	void TakeDamage(int Damage) override;
 
 
