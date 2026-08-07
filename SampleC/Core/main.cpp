@@ -8,16 +8,10 @@
 #include "Entities/Entity.h"
 #include "Entities/Player.h"
 #include "Entities/Monster.h"
+#include "Items/Weapon.h"
 
-// 関数系は main() よりも手前に書かなければ認識されない
-//void DisplayWeapon()
-//{
-//    Weapon MySword("鉄の剣", 15);
-//
-//    std::cout << "武器名: " << MySword.GetName() << std::endl;
-//    std::cout << "攻撃力 " << MySword.GetAttackPower() << "\n" << std::endl;
-//}
-//
+// 関数系は main() よりも手前に書く
+
 //void AttackSlime()
 //{
 //    Player Hero("勇者", 100);
@@ -113,7 +107,18 @@
 
 
 
+void DisplayWeapon()
+{
+    // こういった関数内に一時的に用意するオブジェクトは、ポインタを使うべきでない
+    // 作成後、すぐ std::cout で表示するケースがあったとして、ポインタなので nullptr チェックが必要
+    // ただし生成後すぐ使うようなケースは nullptr でないことは自明。
+    // つまり、nullptr チェックが不要 = ポインタを使うべき場面ではない。
+    // Weapon* IronSword = new Weapon("鉄の剣", 20);
 
+    Weapon IronSword("鉄の剣", 25);
+    std::cout << "武器名: " << IronSword.GetName() << std::endl;
+    std::cout << "攻撃力 " << IronSword.GetAttackPower() << std::endl;
+}
 
 int main()
 {
@@ -122,6 +127,8 @@ int main()
 
     //PassFunctions::TestingHowToPassFunctions();
     //CheckVectors::VectorManagementTest();
+
+    DisplayWeapon();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;

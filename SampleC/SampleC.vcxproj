@@ -27,6 +27,7 @@
     <ClInclude Include="Entities\Monster.h" />
     <ClInclude Include="Entities\Player.h" />
     <ClInclude Include="Entities\Slime.h" />
+    <ClInclude Include="Items\Item.h" />
     <ClInclude Include="Items\Weapon.h" />
     <ClInclude Include="Items\WoodBox.h" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <ClCompile Include="Entities\Monster.cpp" />
     <ClCompile Include="Entities\Player.cpp" />
     <ClCompile Include="Entities\Slime.cpp" />
+    <ClCompile Include="Items\Item.cpp" />
     <ClCompile Include="Items\Weapon.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

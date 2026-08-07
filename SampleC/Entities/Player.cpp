@@ -6,7 +6,7 @@
 
 Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
 {
-	std::cout << "Player Constructor" << std::endl;
+	//std::cout << "Player Constructor" << std::endl;
 }
 
 void Player::TakeDamage(int Damage)
