@@ -28,6 +28,9 @@
     <ClInclude Include="Core\Studies\CheckInheritances.h">
       <Filter>Core\Studies</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Studies\CheckVectors.h">
+      <Filter>Core\Studies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -52,6 +55,9 @@
       <Filter>Core\Studies</Filter>
     </ClCompile>
     <ClCompile Include="Core\Studies\CheckInheritances.cpp">
+      <Filter>Core\Studies</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Studies\CheckVectors.cpp">
       <Filter>Core\Studies</Filter>
     </ClCompile>
   </ItemGroup>

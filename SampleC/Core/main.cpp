@@ -1,9 +1,9 @@
 ﻿#include <iostream>
-#include <vector>
 //#include <memory>
 
 #include "Core/Studies/CheckInheritances.h"
 #include "Core/Studies/PassFunctions.h"
+#include "Core/Studies/CheckVectors.h"
 
 #include "Entities/Entity.h"
 #include "Entities/Player.h"
@@ -113,48 +113,6 @@
 
 
 
-// std::vector（動的な可変長配列）での、生成キャラクターのメモリ管理の例
-void VectorManagementTest()
-{
-    std::vector<Player*> PlayerList;
-
-    PlayerList.push_back(new Player("Heap戦士", 100));
-    PlayerList.push_back(new Player("Heap弓使い", 60));
-    PlayerList.push_back(new Player("Heap魔法使い", 50));
-    Player* pPlayerThief = new Player("Heap盗賊", 75);
-    PlayerList.push_back(pPlayerThief);
-
-    std::cout << "敵の全体攻撃!\n";
-
-    for (Player* Target : PlayerList)
-    {
-        if (Target != nullptr)
-        {
-            Target->TakeDamage(30);
-        }
-    }
-
-    std::cout << "<処理終了後のメモリ開放処理>\n";
-
-    for (Player* Target : PlayerList)
-    {
-        delete Target;
-        // ダングリングポインタ対策として Target を nullptr, としても、この場合何も影響が起きない
-        //
-        // Target = nullptr;
-        //
-        // これは for (Player* Target) という書き方が、Target は PlayerList の中身のコピーとして受け取られているから。
-        // * delete Target : 0x1234... の場所にあるメモリを開放して、という命令になるので正しく機能する（ヒープの破棄）
-        // * Target = nullptr : ローカル変数 Target を nullptr にするだけで、PlayerList の値は書き変わらない
-        //
-        // for 中で制御したいときは、for(Player*& Target) という書き方にすると
-        // ポインタそのものへの参照となり、Target = nullptr とすると PlayerList の中身も置き換わることになる
-        // ただ、↓ で PlayerList.clear() でリスト自体を空にして破棄しているのでそこまでやらなくても良い
-    }
-
-    PlayerList.clear();
-
-}
 
 
 int main()
@@ -162,7 +120,8 @@ int main()
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
     std::cout << "Completed Orgamize folders!" << std::endl;
 
-    PassFunctions::TestingHowToPassFunctions();
+    //PassFunctions::TestingHowToPassFunctions();
+    //CheckVectors::VectorManagementTest();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;
