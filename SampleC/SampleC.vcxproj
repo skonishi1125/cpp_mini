@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\IDamageable.h" />
+    <ClInclude Include="Core\Studies\CheckInheritances.h" />
+    <ClInclude Include="Core\Studies\PassFunctions.h" />
     <ClInclude Include="Entities\Entity.h" />
     <ClInclude Include="Entities\Monster.h" />
     <ClInclude Include="Entities\Player.h" />
@@ -29,6 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Core\Studies\CheckInheritances.cpp" />
+    <ClCompile Include="Core\Studies\PassFunctions.cpp" />
     <ClCompile Include="Entities\Entity.cpp" />
     <ClCompile Include="Entities\Monster.cpp" />
     <ClCompile Include="Entities\Player.cpp" />

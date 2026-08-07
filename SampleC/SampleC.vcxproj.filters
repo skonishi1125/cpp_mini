@@ -22,6 +22,12 @@
     <ClInclude Include="Entities\Entity.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Studies\PassFunctions.h">
+      <Filter>Core\Studies</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Studies\CheckInheritances.h">
+      <Filter>Core\Studies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -42,6 +48,12 @@
     <ClCompile Include="Entities\Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Studies\PassFunctions.cpp">
+      <Filter>Core\Studies</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Studies\CheckInheritances.cpp">
+      <Filter>Core\Studies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -52,6 +64,9 @@
     </Filter>
     <Filter Include="Items">
       <UniqueIdentifier>{d23b6b79-f848-4c16-a694-03284890827f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Studies">
+      <UniqueIdentifier>{8d26c6a3-ee09-43b7-8ff7-569bfd933103}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
