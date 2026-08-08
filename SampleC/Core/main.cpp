@@ -6,6 +6,7 @@
 #include "Core/Studies/CheckVectors.h"
 
 // Managers
+#include "Managers/Manager.h"
 #include "Managers/ItemManager.h"
 
 // 各要素
@@ -128,23 +129,24 @@ void DisplayWeapon()
 void PlayerEquipWeapon()
 {
     Player Hero("勇者", 100);
-    ItemManager SpawnItemManager;
-    Weapon* DroppedWeapon = SpawnItemManager.SpawnWeapon("鉄の剣", 10);
+    Weapon* DroppedWeapon = ItemManager::GetInstance().SpawnWeapon("鉄の剣", 10);
 
     std::cout << Hero.GetEquippedWeaponName() << std::endl;
     Hero.AttachWeapon(DroppedWeapon);
     std::cout << Hero.GetEquippedWeaponName() << std::endl;
+
+    delete DroppedWeapon;
+    DroppedWeapon = nullptr;
 }
 
 int main()
 {
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
-    std::cout << "Completed Orgamize folders!" << std::endl;
 
     //PassFunctions::TestingHowToPassFunctions();
     //CheckVectors::VectorManagementTest();
 
-    DisplayWeapon();
+    //DisplayWeapon();
     PlayerEquipWeapon();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
