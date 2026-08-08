@@ -5,6 +5,10 @@
 #include "Core/Studies/PassFunctions.h"
 #include "Core/Studies/CheckVectors.h"
 
+// Managers
+#include "Managers/ItemManager.h"
+
+// 各要素
 #include "Entities/Entity.h"
 #include "Entities/Player.h"
 #include "Entities/Monster.h"
@@ -120,17 +124,13 @@ void DisplayWeapon()
     std::cout << "攻撃力 " << IronSword.GetAttackPower() << std::endl;
 }
 
-// 武器を Heap に生成して、そのポインタを返す。Item Manager などが担う役割
-Weapon* SpawnWeapon(const std::string& WeaponName, int Power)
-{
-    return new Weapon(WeaponName, Power);
-}
 
 void PlayerEquipWeapon()
 {
     Player Hero("勇者", 100);
+    ItemManager SpawnItemManager;
+    Weapon* DroppedWeapon = SpawnItemManager.SpawnWeapon("鉄の剣", 10);
 
-    Weapon* DroppedWeapon = SpawnWeapon("鉄の剣", 10);
     std::cout << Hero.GetEquippedWeaponName() << std::endl;
     Hero.AttachWeapon(DroppedWeapon);
     std::cout << Hero.GetEquippedWeaponName() << std::endl;

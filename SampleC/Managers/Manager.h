@@ -1,1 +1,6 @@
-#pragma once
+﻿#pragma once
+
+class Manager
+{
+
+};
