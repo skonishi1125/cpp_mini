@@ -115,9 +115,25 @@ void DisplayWeapon()
     // つまり、nullptr チェックが不要 = ポインタを使うべき場面ではない。
     // Weapon* IronSword = new Weapon("鉄の剣", 20);
 
-    Weapon IronSword("鉄の剣", 25);
+    Weapon IronSword("どうの剣", 25);
     std::cout << "武器名: " << IronSword.GetName() << std::endl;
     std::cout << "攻撃力 " << IronSword.GetAttackPower() << std::endl;
+}
+
+// 武器を Heap に生成して、そのポインタを返す。Item Manager などが担う役割
+Weapon* SpawnWeapon(const std::string& WeaponName, int Power)
+{
+    return new Weapon(WeaponName, Power);
+}
+
+void PlayerEquipWeapon()
+{
+    Player Hero("勇者", 100);
+
+    Weapon* DroppedWeapon = SpawnWeapon("鉄の剣", 10);
+    std::cout << Hero.GetEquippedWeaponName() << std::endl;
+    Hero.AttachWeapon(DroppedWeapon);
+    std::cout << Hero.GetEquippedWeaponName() << std::endl;
 }
 
 int main()
@@ -129,6 +145,7 @@ int main()
     //CheckVectors::VectorManagementTest();
 
     DisplayWeapon();
+    PlayerEquipWeapon();
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;

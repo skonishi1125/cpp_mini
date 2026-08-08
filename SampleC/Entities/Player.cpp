@@ -1,12 +1,22 @@
 ﻿#include <iostream>
 
 #include "Player.h"
-//#include "Weapon.h"
+#include "Items/Weapon.h"
 
 
 Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
 {
 	//std::cout << "Player Constructor" << std::endl;
+}
+
+const std::string Player::GetEquippedWeaponName()
+{
+	if (EquippedWeapon != nullptr)
+	{
+		return EquippedWeapon->GetName();
+	}
+
+	return "なし";
 }
 
 void Player::TakeDamage(int Damage)
@@ -21,6 +31,11 @@ void Player::TakeDamage(int Damage)
 		std::cout << Name << " は " << "死んでしまった！\n";
 	}
 
+}
+
+void Player::AttachWeapon(Weapon* NewWeapon)
+{
+	EquippedWeapon = NewWeapon;
 }
 
 //Player::~Player()

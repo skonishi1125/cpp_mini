@@ -5,6 +5,8 @@
 #include <string>
 //#include <memory>
 
+class Weapon;
+
 class Player : public Entity
 {
 public:
@@ -13,7 +15,11 @@ public:
 	Player(const std::string& InitName, int InitHp);
 
 	const std::string GetPlayerName() { return Name; }
+	const std::string GetEquippedWeaponName();
+
 	void TakeDamage(int Damage) override;
+
+	void AttachWeapon(Weapon* NewWeapon);
 
 
 	//~Player();
@@ -28,9 +34,6 @@ public:
 
 
 private:
-	//std::string Name;
-	//int Hp;
-
-	//Weapon* EquippedWeapon;
+	Weapon* EquippedWeapon;
 	//std::unique_ptr<Weapon> EquippedWeaponWithSmartPointer;
 };
