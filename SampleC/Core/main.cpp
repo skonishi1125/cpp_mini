@@ -131,6 +131,8 @@ void PlayerEquipWeapon()
     Player Hero("勇者", 100);
     Weapon* DroppedWeapon = ItemManager::GetInstance().SpawnWeapon("鉄の剣", 10);
 
+    std::cout << ItemManager::GetInstance().GetDebugManagerName() << std::endl;
+
     std::cout << Hero.GetEquippedWeaponName() << std::endl;
     Hero.AttachWeapon(DroppedWeapon);
     std::cout << Hero.GetEquippedWeaponName() << std::endl;

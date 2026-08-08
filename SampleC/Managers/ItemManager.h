@@ -27,7 +27,10 @@ private:
 	// コンストラクタ / デストラクタを private 配置とすると、
 	// ItemManager IM; とか new ItemManager() と書くとコンパイルエラーになる。
 	// ※ただし、親である Manager<ItemManager> にだけは別途 friend で許可する形にしている
-	ItemManager() = default;
+	//ItemManager() = default;
+
+	ItemManager();
+
 	~ItemManager() = default;
 
 };

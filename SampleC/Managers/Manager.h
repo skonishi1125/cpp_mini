@@ -1,13 +1,17 @@
 ﻿#pragma once
 
+#include <string>
+
 // シングルトンパターンでの設計 親クラス
 
-// テンプレートクラスとしての定義
-// template クラス
+// template クラスとしての定義
+// 【特徴】
 // * typename T の T は、任意に変えて良い
-// * THoge という風に、プレフィックスを付けると UE っぽくなる
+// ** THoge という風に、プレフィックスを付けると UE っぽくなる
 // * template クラスとした場合、Manager::GetInstance() というように型を使わない状態では使えない
-// *  error C2955: 'Manager': use of class template requires template argument list
+// **  error C2955: 'Manager': use of class template requires template argument list
+// * template クラスとした場合、.cpp 側でコンストラクタなどを記載することはできなくなる
+// ** そのため、.h ファイル上で完結させよう
 template <typename TManagerType>
 class Manager
 {
@@ -29,10 +33,19 @@ public:
 		return Instance;
 	}
 
+	std::string GetDebugManagerName() const
+	{
+		return DebugManagerName;
+	}
+
 protected:
 	// default: 特別なことはしないので、標準の処理をしてくれという明示
 	// コンストラクタなら標準の生成処理を, デストラクタなら標準の破棄処理をさせる
-	Manager() = default;
+	// Manager() = default; // ← 特にコンストラクタでやることが無い場合は、このように書く
+	Manager()
+	{
+		DebugManagerName = "Manager";
+	}
 
 	// デストラクタに付与する virtual の意図
 	// Manager* m = New ItemManager() など、親クラスに子クラスを保持するときをケアした書き方
@@ -40,4 +53,5 @@ protected:
 	// 結果、ItemManager 側のデストラクタが呼ばれなくなり不具合の原因となり得るため、そちらを対策している
 	virtual ~Manager() = default;
 
+	std::string DebugManagerName;
 };

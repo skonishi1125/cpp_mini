@@ -68,7 +68,6 @@
     <ClCompile Include="Items\Item.cpp">
       <Filter>Items</Filter>
     </ClCompile>
-    <ClCompile Include="Managers\Manager.cpp" />
     <ClCompile Include="Managers\ItemManager.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,6 @@
     <ClCompile Include="Items\Item.cpp" />
     <ClCompile Include="Items\Weapon.cpp" />
     <ClCompile Include="Managers\ItemManager.cpp" />
-    <ClCompile Include="Managers\Manager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

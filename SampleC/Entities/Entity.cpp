@@ -4,7 +4,7 @@
 
 Entity::Entity(const std::string& InitName, int InitHp) : Name(InitName), MaxHp(InitHp)
 {
-	std::cout << "Exec Entity() Constructor. Name: " << InitName << " HP: " << InitHp << std::endl;
+	//std::cout << "Exec Entity() Constructor. Name: " << InitName << " HP: " << InitHp << std::endl;
 	CurrentHp = MaxHp;
 }
 

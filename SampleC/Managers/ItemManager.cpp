@@ -1,5 +1,17 @@
-﻿#include "ItemManager.h"
+﻿#include <string>
+
+#include "ItemManager.h"
 #include "Items/Weapon.h"
+
+// コンストラクタでメンバ初期化子リストを使うのはベストプラクティスだが、
+// 親クラスで定義されたメンバ変数は、初期化子リストで定義することはできない
+// * ItemManager::ItemManager() : DebugManagerName("ItemManager");
+// * error C2614: 'ItemManager': illegal member initialization: 'DebugManagerName' is not a base or member
+// なので、普通に書こう
+ItemManager::ItemManager()
+{
+	DebugManagerName = "ItemManager";
+}
 
 // Heap に Weapon データを用意して、それを格納したポインタを返す
 Weapon* ItemManager::SpawnWeapon(const std::string& Name, int Power)
