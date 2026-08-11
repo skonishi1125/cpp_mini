@@ -7,7 +7,7 @@
 // 親クラスで定義されたメンバ変数は、初期化子リストで定義することはできない
 // * ItemManager::ItemManager() : DebugManagerName("ItemManager");
 // * error C2614: 'ItemManager': illegal member initialization: 'DebugManagerName' is not a base or member
-// なので、普通に書こう
+// なので、親クラスのデータをコンストラクタで調整する場合は普通の関数内に書く形にする
 ItemManager::ItemManager()
 {
 	DebugManagerName = "ItemManager";
