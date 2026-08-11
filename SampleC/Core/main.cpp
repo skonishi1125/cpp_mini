@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 //#include <memory>
 
 #include "Core/Studies/CheckInheritances.h"
@@ -141,15 +142,47 @@ void PlayerEquipWeapon()
     DroppedWeapon = nullptr;
 }
 
+Player* GeneratePlayer(const std::string& PlayerName, const int Health)
+{
+   return new Player(PlayerName, Health);
+}
+
+Weapon* GenerateWeapon(const std::string& WeaponName, int AttackPower)
+{
+    return ItemManager::GetInstance().SpawnWeapon(WeaponName, AttackPower);
+}
+
+void EquipWeaponPlayer(Player* TargetPlayer, Weapon* TargetWeapon)
+{
+    if (TargetPlayer != nullptr && TargetWeapon != nullptr)
+    {
+        TargetPlayer->AttachWeapon(TargetWeapon);
+    }
+}
+
 int main()
 {
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
 
     //PassFunctions::TestingHowToPassFunctions();
     //CheckVectors::VectorManagementTest();
-
     //DisplayWeapon();
-    PlayerEquipWeapon();
+    //PlayerEquipWeapon();
+
+
+    Player* Hero = GeneratePlayer("勇者", 100);
+    Weapon* IronSword = GenerateWeapon("鉄の剣", 10);
+
+    EquipWeaponPlayer(Hero, IronSword);
+
+    // 役目を終えた後は破棄
+    delete IronSword;
+    IronSword = nullptr;
+
+    delete Hero;
+    Hero = nullptr;
+
+
 
     std::cout << std::endl << "=================== END ====================" << std::endl;
     return 0;
