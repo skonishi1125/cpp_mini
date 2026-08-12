@@ -169,13 +169,12 @@ int main()
     //DisplayWeapon();
     //PlayerEquipWeapon();
 
-    Player* Hero = GameManager::GetInstance().SpawnPlayer("勇者", 50);
-    if (Hero)
-    {
-        Hero->AttachWeapon(ItemManager::GetInstance().SpawnWeapon("ぼうっきれ", 5));
-    }
+    // TODO: 別の Manager で管理する？
+    GameManager::GetInstance().SpawnPlayer("勇者", 50);
+    GameManager::GetInstance().SpawnMonster("スライム", 20);
 
-    Monster* Enemy = GameManager::GetInstance().SpawnMonster("けもの", 20);
+    // ゲームループ開始
+    GameManager::GetInstance().RunGameLoop();
 
 
 

@@ -2,22 +2,33 @@
 
 #include <string>
 #include "Manager.h"
+#include "GameTypes.h"
 
-class Player;
-class Monster;
+#include "FieldManager.h"
+#include "BattleManager.h"
+
+class FieldManager;
+class BattleManager;
 
 class GameManager : public Manager<GameManager>
 {
 	friend class Manager<GameManager>;
 
 public:
+
+	GameManager();
+	~GameManager() = default;
+
 	void Initialize();
-	Player* SpawnPlayer(const std::string& Name, const int HitPoint);
-	Monster* SpawnMonster(const std::string& Name, const int HitPoint);
+	void RunGameLoop();
+
+	void SpawnPlayer(const std::string& Name, const int HitPoint);
+	void SpawnMonster(const std::string& Name, const int HitPoint);
 
 private:
-	GameManager();
-	~GameManager();
+	EGameState CurrentState;
+	FieldManager FieldMode;
+	BattleManager BattleMode;
 
 	Player* MainPlayer;
 	Monster* MainMonster;

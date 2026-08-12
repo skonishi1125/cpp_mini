@@ -15,7 +15,6 @@ public:
 	Player(const std::string& InitName, int InitHp);
 	~Player();
 
-	const std::string GetPlayerName() { return Name; }
 	const std::string GetEquippedWeaponName();
 
 	void TakeDamage(int Damage) override;

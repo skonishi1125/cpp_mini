@@ -13,6 +13,8 @@ public:
 	// Interface IDamageable
 	void TakeDamage(int Damage) override;
 
+	const std::string GetName() { return Name; }
+
 protected:
 	// Name は xx のダメージ というようにログを出したい場合は、子クラスで参照できるように調整する必要がある
 	// そういったものは protected で適宜管理する。

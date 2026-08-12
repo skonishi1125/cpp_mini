@@ -5,22 +5,22 @@
 
 void PassFunctions::FuncByValue(Player p_value)
 {
-    std::cout << p_value.GetPlayerName() << std::endl;
+    std::cout << p_value.GetName() << std::endl;
 }
 
 void PassFunctions::FuncByPointer(Player* p_p)
 {
-    std::cout << p_p->GetPlayerName() << std::endl;
+    std::cout << p_p->GetName() << std::endl;
 }
 
 void PassFunctions::FuncByReference(Player& p_ref)
 {
-    std::cout << p_ref.GetPlayerName() << std::endl;
+    std::cout << p_ref.GetName() << std::endl;
 }
 
 void PassFunctions::FuncByPointerAndReference(Player*& p_p_and_ref)
 {
-    std::cout << p_p_and_ref->GetPlayerName() << std::endl;
+    std::cout << p_p_and_ref->GetName() << std::endl;
 }
 
 void PassFunctions::TestingHowToPassFunctions()
