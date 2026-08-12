@@ -12,27 +12,30 @@ GameManager::GameManager()
 	DebugManagerName = "GameManager";
 }
 
+// main() で走らせる処理
+// while ループで入力を常に受け付ける Tick のような設定を実現させている
 void GameManager::RunGameLoop()
 {
+	// ゲーム開始時、Field 状態から始める
 	CurrentState = EGameState::Field;
 	FieldMode.Initialize();
 
-	// 無限ループで処理を常に受け付ける設定にする(実質的な Tick 処理)
 	while (CurrentState != EGameState::Exit)
 	{
+		// こちらの State が変わったとき = Field から Battle に遷移など、シーンが変わる瞬間になる
 		EGameState NextState = CurrentState;
 
 		switch (CurrentState)
 		{
 		case EGameState::Field:
-			NextState = FieldMode.Update();
+			NextState = FieldMode.Update(); // Field 用の入力受付
 			break;
 		case EGameState::Battle:
-			NextState = BattleMode.Update();
+			NextState = BattleMode.Update(); // Battle 用の入力受付
 			break;
 		}
 
-		// 状態が変わったときの処理
+		// 各Mode.Update() で State が返られたときの処理
 		if (CurrentState != NextState)
 		{
 			// 戦闘開始
@@ -44,7 +47,6 @@ void GameManager::RunGameLoop()
 				};
 				BattleMode.StartBattle(Context);
 			}
-
 			else if (NextState == EGameState::Field)
 			{
 				FieldMode.Initialize();

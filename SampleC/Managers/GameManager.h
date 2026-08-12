@@ -15,10 +15,6 @@ class GameManager : public Manager<GameManager>
 	friend class Manager<GameManager>;
 
 public:
-
-	GameManager();
-	~GameManager() = default;
-
 	void Initialize();
 	void RunGameLoop();
 
@@ -26,6 +22,9 @@ public:
 	void SpawnMonster(const std::string& Name, const int HitPoint);
 
 private:
+	GameManager();
+	~GameManager() = default;
+
 	EGameState CurrentState;
 	FieldManager FieldMode;
 	BattleManager BattleMode;
