@@ -6,9 +6,12 @@
 
 #include "FieldManager.h"
 #include "BattleManager.h"
+#include "Registries/EntityRegistry.h"
 
 class FieldManager;
 class BattleManager;
+class EntityRegistry;
+
 
 class GameManager : public Manager<GameManager>
 {
@@ -29,7 +32,6 @@ private:
 	FieldManager FieldMode;
 	BattleManager BattleMode;
 
-	Player* MainPlayer;
-	Monster* MainMonster;
+	EntityRegistry Registry;
 
 };

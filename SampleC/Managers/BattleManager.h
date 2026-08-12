@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <vector>
+
 #include "Manager.h"
 #include "GameTypes.h"
 
@@ -16,6 +18,6 @@ public:
 	EGameState Update();
 
 private:
-	Player* CurrentPlayer = nullptr;
-	Monster* CurrentMonster = nullptr;
+	std::vector<Player*> CurrentParty;
+	std::vector<Monster*> CurrentEnemies;
 };

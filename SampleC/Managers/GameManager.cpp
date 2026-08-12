@@ -6,10 +6,21 @@
 #include "Entities/Monster.h"
 #include "Managers/FieldManager.h"
 #include "Managers/BattleManager.h"
+#include "Registries/EntityRegistry.h"
 
 GameManager::GameManager()
 {
 	DebugManagerName = "GameManager";
+}
+
+void GameManager::SpawnPlayer(const std::string& Name, const int HitPoint)
+{
+	Registry.SpawnPlayer(Name, HitPoint);
+}
+
+void GameManager::SpawnMonster(const std::string& Name, const int HitPoint)
+{
+	Registry.SpawnMonster(Name, HitPoint);
 }
 
 // main() で走らせる処理
@@ -42,8 +53,8 @@ void GameManager::RunGameLoop()
 			if (NextState == EGameState::Battle)
 			{
 				FBattleContext Context{
-					MainPlayer,
-					MainMonster
+					Registry.GetParty(),
+					Registry.GetActiveEnemies(),
 				};
 				BattleMode.StartBattle(Context);
 			}
@@ -63,14 +74,6 @@ void GameManager::RunGameLoop()
 
 }
 
-void GameManager::SpawnPlayer(const std::string& Name, const int HitPoint)
-{
-	MainPlayer = new Player(Name, HitPoint);
-}
 
-void GameManager::SpawnMonster(const std::string& Name, const int HitPoint)
-{
-	MainMonster = new Monster(Name, HitPoint);
-}
 
 

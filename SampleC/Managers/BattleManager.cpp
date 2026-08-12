@@ -8,10 +8,22 @@
 
 void BattleManager::StartBattle(const FBattleContext& Context)
 {
-	CurrentPlayer = Context.TargetPlayer;
-	CurrentMonster = Context.TargetMonster;
+    CurrentParty = Context.Party;
+    CurrentEnemies = Context.Enemies;
 
-	std::cout << "\n[Battle] 戦闘開始！ " << CurrentMonster->GetName() << " があらわれた！\n";
+    std::cout << "\n[Battle] 戦闘開始！\n";
+
+
+    // C++ では空配列に [0] などでアクセスするとクラッシュするため、チェックする
+    // UE5 での .Num() > 0 チェックと同じ。
+    if (!CurrentEnemies.empty())
+    {
+        for (Monster* Enemy : CurrentEnemies)
+        {
+            std::cout << Enemy->GetName() << "があらわれた！\n";
+        }
+    }
+
 	std::cout << " (スペースキー: 攻撃 / Rキー: 逃げる)\n";
 }
 
@@ -23,8 +35,13 @@ EGameState BattleManager::Update()
 
         if (Key == ' ')
         {
-            std::cout << "\n[Battle] " << CurrentPlayer->GetName() << " の攻撃！\n";
-            std::cout << "[Battle] " << CurrentMonster->GetName() << " を倒した！\n";
+            if (!CurrentParty.empty() && !CurrentEnemies.empty())
+            {
+                for (Player* AttackPlayer : CurrentParty)
+                {
+                    std::cout << AttackPlayer->GetName() << " の攻撃！\n";
+                }
+            }
             return EGameState::Field;
         }
         else if (Key == 'r' || Key == 'R')

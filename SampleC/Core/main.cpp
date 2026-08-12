@@ -169,9 +169,13 @@ int main()
     //DisplayWeapon();
     //PlayerEquipWeapon();
 
-    // TODO: 別の Manager で管理する？
+    // 事前の準備
     GameManager::GetInstance().SpawnPlayer("勇者", 50);
+    GameManager::GetInstance().SpawnPlayer("魔導士", 50);
+    GameManager::GetInstance().SpawnPlayer("弓使い", 50);
+
     GameManager::GetInstance().SpawnMonster("スライム", 20);
+    GameManager::GetInstance().SpawnMonster("モグラ", 20);
 
     // ゲームループ開始
     GameManager::GetInstance().RunGameLoop();

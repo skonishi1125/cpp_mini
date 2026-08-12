@@ -40,6 +40,7 @@
     <ClInclude Include="Managers\GameTypes.h" />
     <ClInclude Include="Managers\FieldManager.h" />
     <ClInclude Include="Managers\BattleManager.h" />
+    <ClInclude Include="Registries\EntityRegistry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -76,6 +77,7 @@
     <ClCompile Include="Managers\GameManager.cpp" />
     <ClCompile Include="Managers\FieldManager.cpp" />
     <ClCompile Include="Managers\BattleManager.cpp" />
+    <ClCompile Include="Registries\EntityRegistry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

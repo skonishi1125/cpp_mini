@@ -36,6 +36,7 @@
     <ClInclude Include="Managers\GameTypes.h" />
     <ClInclude Include="Managers\ItemManager.h" />
     <ClInclude Include="Managers\Manager.h" />
+    <ClInclude Include="Registries\EntityRegistry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp" />
@@ -52,6 +53,7 @@
     <ClCompile Include="Managers\FieldManager.cpp" />
     <ClCompile Include="Managers\GameManager.cpp" />
     <ClCompile Include="Managers\ItemManager.cpp" />
+    <ClCompile Include="Registries\EntityRegistry.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

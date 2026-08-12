@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <vector>
+
 class Player;
 class Monster;
 
@@ -12,6 +14,6 @@ enum class EGameState
 
 struct FBattleContext
 {
-	Player* TargetPlayer;
-	Monster* TargetMonster;
+	std::vector<Player*> Party;
+	std::vector<Monster*> Enemies;
 };
