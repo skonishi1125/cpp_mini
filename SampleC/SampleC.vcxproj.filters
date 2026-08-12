@@ -36,6 +36,7 @@
     </ClInclude>
     <ClInclude Include="Managers\Manager.h" />
     <ClInclude Include="Managers\ItemManager.h" />
+    <ClInclude Include="Managers\GameManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -69,6 +70,7 @@
       <Filter>Items</Filter>
     </ClCompile>
     <ClCompile Include="Managers\ItemManager.cpp" />
+    <ClCompile Include="Managers\GameManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

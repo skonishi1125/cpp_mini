@@ -7,7 +7,7 @@
 #include "Core/Studies/CheckVectors.h"
 
 // Managers
-#include "Managers/Manager.h"
+#include "Managers/GameManager.h"
 #include "Managers/ItemManager.h"
 
 // 各要素
@@ -169,18 +169,15 @@ int main()
     //DisplayWeapon();
     //PlayerEquipWeapon();
 
+    Player* Hero = GameManager::GetInstance().SpawnPlayer("勇者", 50);
+    if (Hero)
+    {
+        Hero->AttachWeapon(ItemManager::GetInstance().SpawnWeapon("ぼうっきれ", 5));
+    }
 
-    Player* Hero = GeneratePlayer("勇者", 100);
-    Weapon* IronSword = GenerateWeapon("鉄の剣", 10);
+    Monster* Enemy = GameManager::GetInstance().SpawnMonster("けもの", 20);
 
-    EquipWeaponPlayer(Hero, IronSword);
 
-    // 役目を終えた後は破棄
-    delete IronSword;
-    IronSword = nullptr;
-
-    delete Hero;
-    Hero = nullptr;
 
 
 

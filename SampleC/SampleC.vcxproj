@@ -30,6 +30,7 @@
     <ClInclude Include="Items\Item.h" />
     <ClInclude Include="Items\Weapon.h" />
     <ClInclude Include="Items\WoodBox.h" />
+    <ClInclude Include="Managers\GameManager.h" />
     <ClInclude Include="Managers\ItemManager.h" />
     <ClInclude Include="Managers\Manager.h" />
   </ItemGroup>
@@ -44,6 +45,7 @@
     <ClCompile Include="Entities\Slime.cpp" />
     <ClCompile Include="Items\Item.cpp" />
     <ClCompile Include="Items\Weapon.cpp" />
+    <ClCompile Include="Managers\GameManager.cpp" />
     <ClCompile Include="Managers\ItemManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

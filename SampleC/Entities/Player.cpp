@@ -9,6 +9,12 @@ Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitH
 	//std::cout << "Player Constructor" << std::endl;
 }
 
+Player::~Player()
+{
+	delete EquippedWeapon;
+	EquippedWeapon = nullptr;
+}
+
 const std::string Player::GetEquippedWeaponName()
 {
 	if (EquippedWeapon != nullptr)

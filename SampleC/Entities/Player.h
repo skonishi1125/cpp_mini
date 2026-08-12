@@ -13,6 +13,7 @@ public:
 	// 子クラスの実装と、親への引数の渡し方
 	// 引数を持つコンストラクタを用意して、.cpp 側でパラメータを親に渡すという設計になる
 	Player(const std::string& InitName, int InitHp);
+	~Player();
 
 	const std::string GetPlayerName() { return Name; }
 	const std::string GetEquippedWeaponName();
