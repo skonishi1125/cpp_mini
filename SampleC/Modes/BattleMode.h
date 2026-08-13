@@ -2,17 +2,16 @@
 
 #include <vector>
 
-#include "Manager.h"
-#include "GameTypes.h"
+#include "Managers/GameTypes.h"
 
 class Player;
 class Monster;
 
-class BattleManager
+class BattleMode
 {
 public:
-	BattleManager() = default;
-	~BattleManager() = default;
+	BattleMode() = default;
+	~BattleMode() = default;
 
 	void StartBattle(const FBattleContext& Context);
 	EGameState Update();

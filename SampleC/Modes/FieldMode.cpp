@@ -1,16 +1,16 @@
 ﻿#include <iostream>
 #include <conio.h> // 非ブロッキング入力
 
-#include "FieldManager.h"
+#include "FieldMode.h"
 
-void FieldManager::Initialize()
+void FieldMode::Initialize()
 {
 	std::cout << "\n[FIELD] 探索を開始します...\n";
 	std::cout << "（Space : 戦闘へ移動 / Esc : ゲーム終了）\n";
 }
 
 // キーボードが押されているかどうかをチェックして、そちらに合った State を返す
-EGameState FieldManager::Update()
+EGameState FieldMode::Update()
 {
 	// key が押されたときに true となる
 	if (_kbhit())

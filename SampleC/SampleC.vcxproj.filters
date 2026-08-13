@@ -38,9 +38,10 @@
     <ClInclude Include="Managers\ItemManager.h" />
     <ClInclude Include="Managers\GameManager.h" />
     <ClInclude Include="Managers\GameTypes.h" />
-    <ClInclude Include="Managers\FieldManager.h" />
-    <ClInclude Include="Managers\BattleManager.h" />
+    <ClInclude Include="Modes\FieldMode.h" />
+    <ClInclude Include="Modes\BattleMode.h" />
     <ClInclude Include="Registries\EntityRegistry.h" />
+    <ClInclude Include="Modes\BaseMode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -75,9 +76,10 @@
     </ClCompile>
     <ClCompile Include="Managers\ItemManager.cpp" />
     <ClCompile Include="Managers\GameManager.cpp" />
-    <ClCompile Include="Managers\FieldManager.cpp" />
-    <ClCompile Include="Managers\BattleManager.cpp" />
+    <ClCompile Include="Modes\FieldMode.cpp" />
+    <ClCompile Include="Modes\BattleMode.cpp" />
     <ClCompile Include="Registries\EntityRegistry.cpp" />
+    <ClCompile Include="Modes\BaseMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

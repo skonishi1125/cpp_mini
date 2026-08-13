@@ -4,8 +4,7 @@
 #include "GameManager.h"
 #include "Entities/Player.h"
 #include "Entities/Monster.h"
-#include "Managers/FieldManager.h"
-#include "Managers/BattleManager.h"
+
 #include "Registries/EntityRegistry.h"
 
 GameManager::GameManager()
@@ -13,6 +12,9 @@ GameManager::GameManager()
 	DebugManagerName = "GameManager";
 }
 
+// Facade パターン
+// Entity の生成をカプセル化した Registry を使って行う
+// GameManager を使う側 main() などに対して Registry を隠蔽するパターン
 void GameManager::SpawnPlayer(const std::string& Name, const int HitPoint)
 {
 	Registry.SpawnPlayer(Name, HitPoint);

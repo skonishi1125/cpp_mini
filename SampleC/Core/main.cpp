@@ -170,6 +170,7 @@ int main()
     //PlayerEquipWeapon();
 
     // 事前の準備
+    // GameManager を介して EntityRegistry を用いて Entity をスポーンする
     GameManager::GetInstance().SpawnPlayer("勇者", 50);
     GameManager::GetInstance().SpawnPlayer("魔導士", 50);
     GameManager::GetInstance().SpawnPlayer("弓使い", 50);

@@ -1,12 +1,12 @@
 ﻿#include <iostream>
 #include <conio.h>
 
-#include "BattleManager.h"
+#include "BattleMode.h"
 
 #include "Entities/Player.h"
 #include "Entities/Monster.h"
 
-void BattleManager::StartBattle(const FBattleContext& Context)
+void BattleMode::StartBattle(const FBattleContext& Context)
 {
     CurrentParty = Context.Party;
     CurrentEnemies = Context.Enemies;
@@ -27,7 +27,7 @@ void BattleManager::StartBattle(const FBattleContext& Context)
 	std::cout << " (スペースキー: 攻撃 / Rキー: 逃げる)\n";
 }
 
-EGameState BattleManager::Update()
+EGameState BattleMode::Update()
 {
     if (_kbhit())
     {

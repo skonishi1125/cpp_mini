@@ -4,12 +4,12 @@
 #include "Manager.h"
 #include "GameTypes.h"
 
-#include "FieldManager.h"
-#include "BattleManager.h"
+#include "Modes/FieldMode.h"
+#include "Modes/BattleMode.h"
 #include "Registries/EntityRegistry.h"
 
-class FieldManager;
-class BattleManager;
+class FieldMode;
+class BattleMode;
 class EntityRegistry;
 
 
@@ -29,8 +29,8 @@ private:
 	~GameManager() = default;
 
 	EGameState CurrentState;
-	FieldManager FieldMode;
-	BattleManager BattleMode;
+	FieldMode FieldMode;
+	BattleMode BattleMode;
 
 	EntityRegistry Registry;
 
