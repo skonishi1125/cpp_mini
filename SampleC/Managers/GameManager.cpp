@@ -34,37 +34,30 @@ void GameManager::RunGameLoop()
 
 	// ゲーム開始時、Field 状態から始める
 	CurrentState = EGameState::Field;
-	FieldMode.Enter();
+	CurrentMode = &FieldMode;
+	CurrentMode->Enter(); // nullptr であることは無いので、null チェック不要？
 
 	while (CurrentState != EGameState::Exit)
 	{
-		// こちらの State が変わったとき = Field から Battle に遷移など、シーンが変わる瞬間になる
-		EGameState NextState = CurrentState;
-
-		switch (CurrentState)
-		{
-		case EGameState::Field:
-			NextState = FieldMode.Update(); // Field 用の入力受付
-			break;
-		case EGameState::Battle:
-			NextState = BattleMode.Update(); // Battle 用の入力受付
-			break;
-		}
+		EGameState NextState = CurrentMode->Update();
 
 		// 各Mode.Update() で State が返られたときの処理
 		if (CurrentState != NextState)
 		{
+			CurrentMode->Exit();
+
 			// 戦闘開始
 			if (NextState == EGameState::Battle)
 			{
-				BattleMode.Enter();
+				CurrentMode = &BattleMode;
 			}
 			else if (NextState == EGameState::Field)
 			{
-				FieldMode.Enter();
+				CurrentMode = &FieldMode;
 			}
 
 			CurrentState = NextState;
+			CurrentMode->Enter();
 		}
 
 		// フレームレート制御

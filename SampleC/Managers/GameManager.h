@@ -13,6 +13,8 @@
 //class BattleMode;
 //class EntityRegistry;
 
+class BaseMode;
+
 
 class GameManager : public Manager<GameManager>
 {
@@ -34,5 +36,8 @@ private:
 	BattleMode BattleMode;
 
 	EntityRegistry Registry;
+
+	// 現在アクティブなモード
+	BaseMode* CurrentMode = nullptr;
 
 };
