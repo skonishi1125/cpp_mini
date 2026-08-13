@@ -29,6 +29,9 @@ void GameManager::SpawnMonster(const std::string& Name, const int HitPoint)
 // while ループで入力を常に受け付ける Tick のような設定を実現させている
 void GameManager::RunGameLoop()
 {
+	FieldMode.Initialize(&Registry);
+	BattleMode.Initialize(&Registry);
+
 	// ゲーム開始時、Field 状態から始める
 	CurrentState = EGameState::Field;
 	FieldMode.Enter();
@@ -54,11 +57,7 @@ void GameManager::RunGameLoop()
 			// 戦闘開始
 			if (NextState == EGameState::Battle)
 			{
-				FBattleContext Context{
-					Registry.GetParty(),
-					Registry.GetActiveEnemies(),
-				};
-				BattleMode.StartBattle(Context);
+				BattleMode.Enter();
 			}
 			else if (NextState == EGameState::Field)
 			{

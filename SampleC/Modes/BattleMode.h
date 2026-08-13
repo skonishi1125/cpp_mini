@@ -16,8 +16,6 @@ public:
 	EGameState Update() override;
 
 	void Enter() override;
-
-	void StartBattle(const FBattleContext& Context);
 private:
 	std::vector<Player*> CurrentParty;
 	std::vector<Monster*> CurrentEnemies;

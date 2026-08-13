@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Managers/GameTypes.h"
+#include "Registries/EntityRegistry.h"
 
 class BaseMode
 {
@@ -17,4 +18,16 @@ public:
 	// 子クラスで任意実装である関数は、空の実装にしておき、必要なら override させる
 	virtual void Enter() {};
 	virtual void Exit() {};
+
+	// GameManager などで起動時に 1 度だけ呼ぶ関数
+	// GameManager の持つ、EntityRegistry などのポインタを格納する
+	// 格納すると、FieldMode など各種 Mode で Entity 情報を参照できるようになるので、
+	// Battle 中のデータ情報を Registry 等から参照して取得できるようになる
+	virtual void Initialize(EntityRegistry* InRegistry)
+	{
+		Registry = InRegistry;
+	}
+
+protected:
+	EntityRegistry* Registry = nullptr;
 };

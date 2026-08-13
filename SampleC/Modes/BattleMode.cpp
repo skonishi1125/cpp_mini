@@ -10,14 +10,12 @@ void BattleMode::Enter()
 {
     std::cout << "\n------------ [BATTLE] ------------\n";
     std::cout << "戦闘開始！\n";
-}
 
-void BattleMode::StartBattle(const FBattleContext& Context)
-{
-    Enter();
-
-    CurrentParty = Context.Party;
-    CurrentEnemies = Context.Enemies;
+    if (Registry != nullptr)
+    {
+        CurrentParty = Registry->GetParty();
+        CurrentEnemies = Registry->GetActiveEnemies();
+    }
 
     // C++ では空配列に [0] などでアクセスするとクラッシュするため、チェックする
     // UE5 での .Num() > 0 チェックと同じ。
@@ -29,7 +27,8 @@ void BattleMode::StartBattle(const FBattleContext& Context)
         }
     }
 
-	std::cout << " (スペースキー: 攻撃 / Rキー: 逃げる)\n";
+    std::cout << " (スペースキー: 攻撃 / Rキー: 逃げる)\n";
+
 }
 
 EGameState BattleMode::Update()
