@@ -79,7 +79,6 @@
     <ClCompile Include="Modes\FieldMode.cpp" />
     <ClCompile Include="Modes\BattleMode.cpp" />
     <ClCompile Include="Registries\EntityRegistry.cpp" />
-    <ClCompile Include="Modes\BaseMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

@@ -54,7 +54,6 @@
     <ClCompile Include="Modes\FieldMode.cpp" />
     <ClCompile Include="Managers\GameManager.cpp" />
     <ClCompile Include="Managers\ItemManager.cpp" />
-    <ClCompile Include="Modes\BaseMode.cpp" />
     <ClCompile Include="Registries\EntityRegistry.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

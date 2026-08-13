@@ -1,18 +1,14 @@
 ﻿#pragma once
 
-#include "Managers/GameTypes.h"
+#include "BaseMode.h"
 
-class FieldMode
+class FieldMode : public BaseMode
 {
 public:
 	FieldMode() = default;
 	~FieldMode() = default;
 
-	void Initialize();
-	EGameState Update();
+	EGameState Update() override;
 
-private:
-
-
-
+	void Enter() override;
 };

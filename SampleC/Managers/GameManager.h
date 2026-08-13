@@ -4,13 +4,14 @@
 #include "Manager.h"
 #include "GameTypes.h"
 
+// 実体で定義しているクラス変数の場合、前方宣言は使えない
+// 宣言時点でその Object に対するメモリ確保をする必要があり、そのデータ収集に使うため。
 #include "Modes/FieldMode.h"
 #include "Modes/BattleMode.h"
 #include "Registries/EntityRegistry.h"
-
-class FieldMode;
-class BattleMode;
-class EntityRegistry;
+//class FieldMode;
+//class BattleMode;
+//class EntityRegistry;
 
 
 class GameManager : public Manager<GameManager>

@@ -6,13 +6,18 @@
 #include "Entities/Player.h"
 #include "Entities/Monster.h"
 
+void BattleMode::Enter()
+{
+    std::cout << "\n------------ [BATTLE] ------------\n";
+    std::cout << "戦闘開始！\n";
+}
+
 void BattleMode::StartBattle(const FBattleContext& Context)
 {
+    Enter();
+
     CurrentParty = Context.Party;
     CurrentEnemies = Context.Enemies;
-
-    std::cout << "\n[Battle] 戦闘開始！\n";
-
 
     // C++ では空配列に [0] などでアクセスするとクラッシュするため、チェックする
     // UE5 での .Num() > 0 チェックと同じ。
@@ -46,7 +51,7 @@ EGameState BattleMode::Update()
         }
         else if (Key == 'r' || Key == 'R')
         {
-            std::cout << "\n[Battle] 無事に逃げ切った！\n";
+            std::cout << "[Battle] 無事に逃げ切った！\n";
             return EGameState::Field;
         }
     }

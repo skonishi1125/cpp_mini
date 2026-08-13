@@ -31,7 +31,7 @@ void GameManager::RunGameLoop()
 {
 	// ゲーム開始時、Field 状態から始める
 	CurrentState = EGameState::Field;
-	FieldMode.Initialize();
+	FieldMode.Enter();
 
 	while (CurrentState != EGameState::Exit)
 	{
@@ -62,7 +62,7 @@ void GameManager::RunGameLoop()
 			}
 			else if (NextState == EGameState::Field)
 			{
-				FieldMode.Initialize();
+				FieldMode.Enter();
 			}
 
 			CurrentState = NextState;

@@ -2,20 +2,22 @@
 
 #include <vector>
 
-#include "Managers/GameTypes.h"
+#include "BaseMode.h"
 
 class Player;
 class Monster;
 
-class BattleMode
+class BattleMode : public BaseMode
 {
 public:
 	BattleMode() = default;
 	~BattleMode() = default;
 
-	void StartBattle(const FBattleContext& Context);
-	EGameState Update();
+	EGameState Update() override;
 
+	void Enter() override;
+
+	void StartBattle(const FBattleContext& Context);
 private:
 	std::vector<Player*> CurrentParty;
 	std::vector<Monster*> CurrentEnemies;
