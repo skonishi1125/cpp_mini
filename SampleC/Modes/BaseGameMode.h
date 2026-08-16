@@ -3,14 +3,14 @@
 #include "Managers/GameTypes.h"
 #include "Registries/EntityRegistry.h"
 
-class BaseMode
+class BaseGameMode
 {
 public:
 	// C++ ポリモーフィズムを考慮するクラスには、 virtual デストラクタを明記する
 	// 親クラスのポインタ経由で子クラスが delete されたとき、子クラスのデストラクタが呼ばれないことを防ぐ
 	// * BaseMode* ModeObj という定義があり、その中に FieldMode のクラスオブジェクトが入っていたとする
 	// * delete ModeObj としたとき、明記が無いと子クラスのデストラクタが呼ばれずメモリリークの要因となる
-	virtual ~BaseMode() = default;
+	virtual ~BaseGameMode() = default;
 
 	// 子クラスで実装必須な関数は、仮想関数としておく
 	virtual EGameState Update() = 0;

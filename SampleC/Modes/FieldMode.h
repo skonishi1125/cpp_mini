@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "BaseMode.h"
+#include "BaseGameMode.h"
 
-class FieldMode : public BaseMode
+class FieldMode : public BaseGameMode
 {
 public:
 	FieldMode() = default;

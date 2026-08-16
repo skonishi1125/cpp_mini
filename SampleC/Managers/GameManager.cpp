@@ -17,47 +17,47 @@ GameManager::GameManager()
 // GameManager を使う側 main() などに対して Registry を隠蔽するパターン
 void GameManager::SpawnPlayer(const std::string& Name, const int HitPoint)
 {
-	Registry.SpawnPlayer(Name, HitPoint);
+	EntityRegistryObj.SpawnPlayer(Name, HitPoint);
 }
 
 void GameManager::SpawnMonster(const std::string& Name, const int HitPoint)
 {
-	Registry.SpawnMonster(Name, HitPoint);
+	EntityRegistryObj.SpawnMonster(Name, HitPoint);
 }
 
 // main() で走らせる処理
 // while ループで入力を常に受け付ける Tick のような設定を実現させている
 void GameManager::RunGameLoop()
 {
-	FieldMode.Initialize(&Registry);
-	BattleMode.Initialize(&Registry);
+	FieldModeObj.Initialize(&EntityRegistryObj);
+	BattleModeObj.Initialize(&EntityRegistryObj);
 
 	// ゲーム開始時、Field 状態から始める
-	CurrentState = EGameState::Field;
-	CurrentMode = &FieldMode;
-	CurrentMode->Enter(); // nullptr であることは無いので、null チェック不要？
+	CurrentGameState = EGameState::Field;
+	CurrentGameMode = &FieldModeObj; // 値で定義したため、メモリ上に確実に存在しているデータのアドレスを取得する
+	CurrentGameMode->Enter(); // nullptr でないことが確定しているため、null チェック不要
 
-	while (CurrentState != EGameState::Exit)
+	while (CurrentGameState != EGameState::Exit)
 	{
-		EGameState NextState = CurrentMode->Update();
+		EGameState NextState = CurrentGameMode->Update();
 
 		// 各Mode.Update() で State が返られたときの処理
-		if (CurrentState != NextState)
+		if (CurrentGameState != NextState)
 		{
-			CurrentMode->Exit();
+			CurrentGameMode->Exit();
 
 			// 戦闘開始
 			if (NextState == EGameState::Battle)
 			{
-				CurrentMode = &BattleMode;
+				CurrentGameMode = &BattleModeObj;
 			}
 			else if (NextState == EGameState::Field)
 			{
-				CurrentMode = &FieldMode;
+				CurrentGameMode = &FieldModeObj;
 			}
 
-			CurrentState = NextState;
-			CurrentMode->Enter();
+			CurrentGameState = NextState;
+			CurrentGameMode->Enter();
 		}
 
 		// フレームレート制御

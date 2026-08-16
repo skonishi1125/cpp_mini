@@ -36,7 +36,7 @@
     <ClInclude Include="Managers\GameTypes.h" />
     <ClInclude Include="Managers\ItemManager.h" />
     <ClInclude Include="Managers\Manager.h" />
-    <ClInclude Include="Modes\BaseMode.h" />
+    <ClInclude Include="Modes\BaseGameMode.h" />
     <ClInclude Include="Registries\EntityRegistry.h" />
   </ItemGroup>
   <ItemGroup>

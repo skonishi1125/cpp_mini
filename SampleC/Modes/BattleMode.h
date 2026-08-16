@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include "BaseMode.h"
+#include "BaseGameMode.h"
 
 class Player;
 class Monster;
 
-class BattleMode : public BaseMode
+class BattleMode : public BaseGameMode
 {
 public:
 	BattleMode() = default;

@@ -13,8 +13,7 @@
 //class BattleMode;
 //class EntityRegistry;
 
-class BaseMode;
-
+class BaseGameMode;
 
 class GameManager : public Manager<GameManager>
 {
@@ -31,13 +30,12 @@ private:
 	GameManager();
 	~GameManager() = default;
 
-	EGameState CurrentState;
-	FieldMode FieldMode;
-	BattleMode BattleMode;
+	FieldMode FieldModeObj;
+	BattleMode BattleModeObj;
+	EntityRegistry EntityRegistryObj;
 
-	EntityRegistry Registry;
-
-	// 現在アクティブなモード
-	BaseMode* CurrentMode = nullptr;
+	// 現在 Active の State と Active な Mode
+	EGameState CurrentGameState;
+	BaseGameMode* CurrentGameMode = nullptr;
 
 };

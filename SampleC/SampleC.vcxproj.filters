@@ -41,7 +41,7 @@
     <ClInclude Include="Modes\FieldMode.h" />
     <ClInclude Include="Modes\BattleMode.h" />
     <ClInclude Include="Registries\EntityRegistry.h" />
-    <ClInclude Include="Modes\BaseMode.h" />
+    <ClInclude Include="Modes\BaseGameMode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
