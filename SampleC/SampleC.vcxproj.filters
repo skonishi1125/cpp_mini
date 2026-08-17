@@ -42,6 +42,7 @@
     <ClInclude Include="Modes\BattleMode.h" />
     <ClInclude Include="Registries\EntityRegistry.h" />
     <ClInclude Include="Modes\BaseGameMode.h" />
+    <ClInclude Include="Core\Studies\CheckWeaponPtr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -79,6 +80,7 @@
     <ClCompile Include="Modes\FieldMode.cpp" />
     <ClCompile Include="Modes\BattleMode.cpp" />
     <ClCompile Include="Registries\EntityRegistry.cpp" />
+    <ClCompile Include="Core\Studies\CheckWeaponPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
