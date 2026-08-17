@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-//#include <memory>
+#include <memory>
 
 #include "Core/Studies/CheckInheritances.h"
 #include "Core/Studies/PassFunctions.h"
@@ -30,58 +30,8 @@
 //    Hero.Attack(Slime);
 //}
 //
-//void MemoryLeakTest()
-//{
-//    // ヒープ領域に動的確保して、Weapon を作成
-//    // delete を付与していないため、タスクマネージャーから SampleC.exe を開くとメモリが溜まっていくことが分かる
-//    while (true)
-//    {
-//        Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
-//        std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
-//    }
-//
-//    //Weapon* droppedWeapon = new Weapon("呪われた剣", 50);
-//    //std::cout << droppedWeapon->GetName() << " を手に入れた！\n";
-//    //delete droppedWeapon; // メモリ開放処理
-//
-//}
-//
-//
-//void DumglingPointerTest()
-//{
-//    std::cout << "--- ダングリングポインタ実験 開始 ---\n";
-//
-//    Player Hero("勇者", 100);
-//    Player Slime("スライム", 30);
-//
-//    Weapon* MagicSword = new Weapon("魔法剣", 30);
-//    Hero.EquipWeapon(MagicSword);
-//
-//    std::cout << "--- 武器ポインタのメモリを開放 ---\n";
-//    delete MagicSword; // 武器をdeleteして、格納先のメモリを解放
-//
-//    Hero.Attack(Slime); // 勇者の装備している剣のアドレスは解放されているが、そちらで攻撃を試みる
-//}
-//
-//void SmartPointerTest()
-//{
-//    std::cout << "--- スマートポインタ ---\n";
-//
-//    Player Hero("勇者", 100);
-//    Player Slime("スライム", 30);
-//
-//    // スマートポインタを使った形での実装
-//    // ヒープ に Weapon を作成し、Ownership を Blade という変数に持たせる
-//    // Blade が消滅するとき、Weapon も delete される
-//    std::unique_ptr<Weapon> Blade = std::make_unique<Weapon>("日本刀", 10);
-//
-//    // Weapon* というポインタを受け取る想定の変数であれば、get() でアドレスを渡す
-//    // ※ std::unique_ptr<Weapon> というスマートポインタで定義されている変数なら、move()で所有権を受け渡すとよい。
-//    Hero.EquipWeaponWithSmartPointer(std::move(Blade));
-//    Hero.Attack(Slime);
-//
-//    // 処理終了と同時に Blade は自身の持つメモリを delete で解放
-//}
+
+
 //
 //void InterfaceTest()
 //{
@@ -160,6 +110,25 @@ void EquipWeaponPlayer(Player* TargetPlayer, Weapon* TargetWeapon)
     }
 }
 
+void UniquePtrTest()
+{
+    std::cout << "--- スマートポインタ ---\n";
+
+    Player Hero("勇者", 100);
+    Monster Slime("スライム", 30);
+
+    // スマートポインタを使った形での実装
+    // ヒープ に Weapon を作成し、Ownership を Nihontou という変数に持たせる
+    // Nihontou が消滅するとき、Weapon も delete される
+    std::unique_ptr<Weapon> Nihontou = std::make_unique<Weapon>("日本刀", 10);
+
+    // Weapon* というポインタを受け取る想定の変数であれば、get() でアドレスを渡す
+    // ※ std::unique_ptr<Weapon> というスマートポインタで定義されている変数なら、move()で所有権を受け渡すとよい。
+    Hero.AttachWeaponWithSP(std::move(Nihontou));
+    std::cout << Hero.GetEquippedWeaponWithSPName() << std::endl;
+
+} // 処理終了と同時に Blade は自身の持つメモリを delete で解放
+
 int main()
 {
     std::cout << "================ Sample C++ ================" << std::endl << std::endl;
@@ -168,6 +137,10 @@ int main()
     //CheckVectors::VectorManagementTest();
     //DisplayWeapon();
     //PlayerEquipWeapon();
+
+
+    UniquePtrTest();
+
 
     // 事前の準備
     // GameManager を介して EntityRegistry を用いて Entity をスポーンする

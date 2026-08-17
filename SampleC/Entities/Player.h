@@ -3,7 +3,7 @@
 #include "Entities/Entity.h"
 
 #include <string>
-//#include <memory>
+#include <memory>
 
 class Weapon;
 
@@ -16,15 +16,13 @@ public:
 	~Player();
 
 	const std::string GetEquippedWeaponName();
+	const std::string GetEquippedWeaponWithSPName();
 
 	void TakeDamage(int Damage) override;
 
 	void AttachWeapon(Weapon* NewWeapon);
 
-
-	//~Player();
-
-	//void EquipWeapon(Weapon* NewWeapon);
+	void AttachWeaponWithSP(std::unique_ptr<Weapon> NewWeaponWithSP);
 
 	//void EquipWeaponWithSmartPointer(std::unique_ptr<Weapon> NewWeapon);
 
@@ -35,5 +33,5 @@ public:
 
 private:
 	Weapon* EquippedWeapon;
-	//std::unique_ptr<Weapon> EquippedWeaponWithSmartPointer;
+	std::unique_ptr<Weapon> EquippedWeaponWithSP;
 };

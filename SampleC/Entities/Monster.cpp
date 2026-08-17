@@ -3,7 +3,7 @@
 
 Monster::Monster(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
 {
-	std::cout << "Monster Constructor" << std::endl;
+	//std::cout << "Monster Constructor" << std::endl;
 }
 
 void Monster::TakeDamage(int Damage)

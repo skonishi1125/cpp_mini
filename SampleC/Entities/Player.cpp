@@ -25,6 +25,16 @@ const std::string Player::GetEquippedWeaponName()
 	return "なし";
 }
 
+const std::string Player::GetEquippedWeaponWithSPName()
+{
+	if (EquippedWeaponWithSP != nullptr)
+	{
+		return EquippedWeaponWithSP->GetName();
+	}
+
+	return "なし";
+}
+
 void Player::TakeDamage(int Damage)
 {
 	// Pure C++ には Super:: とか Parent:: とかそういったキーワードは無い
@@ -42,6 +52,11 @@ void Player::TakeDamage(int Damage)
 void Player::AttachWeapon(Weapon* NewWeapon)
 {
 	EquippedWeapon = NewWeapon;
+}
+
+void Player::AttachWeaponWithSP(std::unique_ptr<Weapon> NewWeaponWithSP)
+{
+	EquippedWeaponWithSP = std::move(NewWeaponWithSP);
 }
 
 //Player::~Player()
