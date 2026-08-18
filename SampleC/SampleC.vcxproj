@@ -24,7 +24,9 @@
     <ClInclude Include="Core\Studies\CheckVectors.h" />
     <ClInclude Include="Core\Studies\CheckWeaponPtr.h" />
     <ClInclude Include="Core\Studies\PassFunctions.h" />
+    <ClInclude Include="Core\Studies\SmartModelTest.h" />
     <ClInclude Include="Entities\Entity.h" />
+    <ClInclude Include="Entities\Modern\Entity.h" />
     <ClInclude Include="Entities\Monster.h" />
     <ClInclude Include="Entities\Player.h" />
     <ClInclude Include="Entities\Slime.h" />
@@ -46,7 +48,9 @@
     <ClCompile Include="Core\Studies\CheckVectors.cpp" />
     <ClCompile Include="Core\Studies\CheckWeaponPtr.cpp" />
     <ClCompile Include="Core\Studies\PassFunctions.cpp" />
+    <ClCompile Include="Core\Studies\SmartModelTest.cpp" />
     <ClCompile Include="Entities\Entity.cpp" />
+    <ClCompile Include="Entities\Modern\Entity.cpp" />
     <ClCompile Include="Entities\Monster.cpp" />
     <ClCompile Include="Entities\Player.cpp" />
     <ClCompile Include="Entities\Slime.cpp" />
@@ -145,6 +149,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

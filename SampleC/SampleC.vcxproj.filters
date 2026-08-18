@@ -43,6 +43,8 @@
     <ClInclude Include="Registries\EntityRegistry.h" />
     <ClInclude Include="Modes\BaseGameMode.h" />
     <ClInclude Include="Core\Studies\CheckWeaponPtr.h" />
+    <ClInclude Include="Core\Studies\SmartModelTest.h" />
+    <ClInclude Include="Entities\Modern\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -81,6 +83,8 @@
     <ClCompile Include="Modes\BattleMode.cpp" />
     <ClCompile Include="Registries\EntityRegistry.cpp" />
     <ClCompile Include="Core\Studies\CheckWeaponPtr.cpp" />
+    <ClCompile Include="Core\Studies\SmartModelTest.cpp" />
+    <ClCompile Include="Entities\Modern\Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

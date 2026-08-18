@@ -5,6 +5,7 @@
 #include "Core/Studies/PassFunctions.h"
 #include "Core/Studies/CheckVectors.h"
 #include "Core/Studies/CheckWeaponPtr.h"
+#include "Core/Studies/SmartModelTest.h"
 
 // Managers
 #include "Managers/GameManager.h"
@@ -73,8 +74,9 @@ int main()
     //CheckVectors::VectorManagementTest();
     //DisplayWeapon();
     //PlayerEquipWeapon();
+    //CheckWeaponPtr::UniquePtrTest();
 
-    CheckWeaponPtr::UniquePtrTest();
+    //SmartModelTest::GenerateModernEntity();
 
 
     // 事前の準備
