@@ -14,8 +14,15 @@
 // 各要素
 #include "Entities/Entity.h"
 #include "Entities/Player.h"
+#include "Entities/Modern/Player.h"
 #include "Entities/Monster.h"
 #include "Items/Weapon.h"
+
+namespace SModern
+{
+    class Player;
+}
+
 
 // 関数系は main() よりも手前に書く
 
@@ -76,10 +83,15 @@ int main()
     //PlayerEquipWeapon();
     //CheckWeaponPtr::UniquePtrTest();
 
-    //SmartModelTest::GenerateModernEntity();
+
+    std::unique_ptr<SModern::Player> SModernPlayer = SmartModelTest::GenerateModernPlayer();
+    // std::unique_ptr は、中身が入っていれば true, 入っていなければ false と返してくれる
+    if (SModernPlayer)
+    {
+        std::cout << SModernPlayer->GetName() << std::endl;
+    }
 
 
-    // 事前の準備
     // GameManager を介して EntityRegistry を用いて Entity をスポーンする
     GameManager::GetInstance().SpawnPlayer("勇者", 50);
     GameManager::GetInstance().SpawnPlayer("魔導士", 50);

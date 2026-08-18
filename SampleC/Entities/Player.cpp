@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "Items/Weapon.h"
+#include "Player.h"
 
 
 Player::Player(const std::string& InitName, int InitHp) : Entity(InitName, InitHp)
@@ -112,4 +113,5 @@ void Player::AttachWeaponWithSP(std::unique_ptr<Weapon> NewWeaponWithSP)
 //	Target.TakeDamage(TotalDamage);
 //}
 //
+
 

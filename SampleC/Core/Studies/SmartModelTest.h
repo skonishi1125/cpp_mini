@@ -7,6 +7,7 @@
 namespace SModern
 {
 	class Entity;
+	class Player;
 }
 
 namespace SmartModelTest
@@ -18,4 +19,6 @@ namespace SmartModelTest
 	// using namespace SModern;
 
 	std::unique_ptr<SModern::Entity> GenerateModernEntity();
+	std::unique_ptr<SModern::Player> GenerateModernPlayer();
+
 }
