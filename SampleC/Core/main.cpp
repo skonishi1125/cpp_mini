@@ -148,7 +148,7 @@ void TestSharedPointer()
 
     std::cout << "参照カウント: " << SharedIronSwordData.use_count() << std::endl; // 1
 
-}
+} // SharedIronSwordData が消えて、参照カウンタが 0 となる
 
 
 int main()
