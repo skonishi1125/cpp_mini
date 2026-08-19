@@ -75,8 +75,7 @@ void GenerateModernAndLegacyClass()
     std::unique_ptr<Weapon> SIronSword = ItemManager::GetInstance().SpawnWeaponWithSP("鉄の剣", 15);
 
     std::unique_ptr<SModern::Player> SModernPlayer = SmartModelTest::GenerateModernPlayer();
-    // std::unique_ptr は、中身が入っていれば true, 入っていなければ false と返してくれる
-    if (SModernPlayer)
+    if (SModernPlayer) // std::unique_ptr は、中身が入っていれば true, 入っていなければ false と返してくれる
     {
         std::cout << SModernPlayer->GetName() << std::endl;
         // SModernPlayer->AttachWeapon(SIronSword); は NG
@@ -99,7 +98,23 @@ void GenerateModernAndLegacyClass()
     if (LegacyPlayer != nullptr)
     {
         std::cout << LegacyPlayer->GetName() << std::endl;
+
+        // SIRonSword は、std::move() 済
+        // std::move が行われると、中身が自動的に nullptr となっているため、SIronSword を渡しても何も起きない
         LegacyPlayer->AttachWeaponWithSP(std::move(SIronSword));
+        std::cout << LegacyPlayer->GetEquippedWeaponWithSPName() << std::endl;
+
+        // 武器のつけ外し
+        std::unique_ptr<Weapon> DetachedWeapon;
+        if (SModernPlayer)
+        {
+            DetachedWeapon = SModernPlayer->DetachWeapon();
+            if (DetachedWeapon)
+            {
+                LegacyPlayer->AttachWeaponWithSP(std::move(DetachedWeapon));
+            }
+        }
+
         std::cout << LegacyPlayer->GetEquippedWeaponWithSPName() << std::endl;
     }
 

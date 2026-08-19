@@ -37,8 +37,8 @@ namespace SModern
 		// ※関数の戻り値を const で固定, 後ろの const で 関数内で EquipWeapon に変更を入れないことを約束
 		const Weapon* GetEquippedWeapon() const { return EquipWeapon.get(); }
 
-
 		void AttachWeapon(std::unique_ptr<Weapon> NewWeapon);
+		std::unique_ptr<Weapon> DetachWeapon();
 
 	private:
 		std::unique_ptr<Weapon> EquipWeapon;
