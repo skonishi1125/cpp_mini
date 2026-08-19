@@ -70,7 +70,42 @@ namespace SModern
 //}
 
 
+void GenerateModernAndLegacyClass()
+{
+    std::unique_ptr<Weapon> SIronSword = ItemManager::GetInstance().SpawnWeaponWithSP("鉄の剣", 15);
 
+    std::unique_ptr<SModern::Player> SModernPlayer = SmartModelTest::GenerateModernPlayer();
+    // std::unique_ptr は、中身が入っていれば true, 入っていなければ false と返してくれる
+    if (SModernPlayer)
+    {
+        std::cout << SModernPlayer->GetName() << std::endl;
+        // SModernPlayer->AttachWeapon(SIronSword); は NG
+        // 理由は、引数で SIronSeord を指定するとコピーを試みて unique_ptr の規約に引っかかるから
+        // std::move を使うことで、SIronSword の所有権を、SModernPlayer.EquipWeapon に委託できる
+        SModernPlayer->AttachWeapon(std::move(SIronSword));
+
+        // 装備中の武器ポインタを取得
+        const Weapon* CurrentWeapon = SModernPlayer->GetEquippedWeapon();
+
+        // Weapon クラス自体に定義されたゲッタなどから情報を呼ぶ
+        if (CurrentWeapon != nullptr)
+        {
+            std::cout << "装備中の武器: " << CurrentWeapon->GetName() << std::endl;
+            std::cout << "攻撃力: " << CurrentWeapon->GetAttackPower() << std::endl;
+        }
+    }
+
+    Player* LegacyPlayer = SmartModelTest::GenerateLegacyPlayer();
+    if (LegacyPlayer != nullptr)
+    {
+        std::cout << LegacyPlayer->GetName() << std::endl;
+        LegacyPlayer->AttachWeaponWithSP(std::move(SIronSword));
+        std::cout << LegacyPlayer->GetEquippedWeaponWithSPName() << std::endl;
+    }
+
+    delete LegacyPlayer;
+    LegacyPlayer = nullptr;
+}
 
 
 int main()
@@ -83,13 +118,8 @@ int main()
     //PlayerEquipWeapon();
     //CheckWeaponPtr::UniquePtrTest();
 
+    GenerateModernAndLegacyClass();
 
-    std::unique_ptr<SModern::Player> SModernPlayer = SmartModelTest::GenerateModernPlayer();
-    // std::unique_ptr は、中身が入っていれば true, 入っていなければ false と返してくれる
-    if (SModernPlayer)
-    {
-        std::cout << SModernPlayer->GetName() << std::endl;
-    }
 
 
     // GameManager を介して EntityRegistry を用いて Entity をスポーンする

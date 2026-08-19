@@ -2,6 +2,8 @@
 
 #include <memory>
 
+class Player;
+
 // 前方宣言 指定の名前空間 SModern にある Entity を使うと宣言。
 // 呼ぶときは、SModern::Entity として呼ぶ
 namespace SModern
@@ -20,5 +22,6 @@ namespace SmartModelTest
 
 	std::unique_ptr<SModern::Entity> GenerateModernEntity();
 	std::unique_ptr<SModern::Player> GenerateModernPlayer();
+	Player* GenerateLegacyPlayer();
 
 }

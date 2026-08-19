@@ -2,6 +2,8 @@
 #include "Entities/Modern/Entity.h"
 #include "Entities/Modern/Player.h"
 
+#include "Entities/Player.h"
+
 // SModern:: 表記を省略したい場合は、以下のように宣言する
 //
 // using SModern::Entity;
@@ -20,4 +22,10 @@ std::unique_ptr<SModern::Player> SmartModelTest::GenerateModernPlayer()
 {
 	std::unique_ptr<SModern::Player> SmartPlayer = std::make_unique<SModern::Player>("uniquePlayer", 80);
 	return SmartPlayer;
+}
+
+Player* SmartModelTest::GenerateLegacyPlayer()
+{
+	Player* LegacyPlayer = new Player("legacyPlayer", 20);
+	return LegacyPlayer;
 }

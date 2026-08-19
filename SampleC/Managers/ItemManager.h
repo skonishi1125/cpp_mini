@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <string>
+#include <memory>
 #include "Manager.h"
 
 class Weapon;
@@ -21,6 +22,8 @@ class ItemManager : public Manager<ItemManager>
 
 public:
 	Weapon* SpawnWeapon(const std::string& Name, int Power);
+	std::unique_ptr<Weapon> SpawnWeaponWithSP(const std::string& Name, int Power);
+
 
 private:
 	// シングルトンパターンの子クラスの原則として、外部からの生成を禁止する
