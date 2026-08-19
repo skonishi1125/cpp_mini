@@ -18,6 +18,10 @@
 #include "Entities/Monster.h"
 #include "Items/Weapon.h"
 
+// shared_ptr 学習用
+#include "Datas/SharedPlayer.h"
+#include "Datas/WeaponData.h"
+
 namespace SModern
 {
     class Player;
@@ -122,6 +126,30 @@ void GenerateModernAndLegacyClass()
     LegacyPlayer = nullptr;
 }
 
+void TestSharedPointer()
+{
+    std::cout << "--- shared_ptr のテスト開始 ---\n";
+
+    std::shared_ptr<WeaponData> SharedIronSwordData = std::make_shared<WeaponData>("鉄の剣マスタデータ", 15);
+    std::cout << "参照カウント: " << SharedIronSwordData.use_count() << std::endl; // 1
+
+    {
+        SharedPlayer PlayerA("勇者A");
+        SharedPlayer PlayerB("勇者B");
+
+        PlayerA.AttachMasterData(SharedIronSwordData);
+        PlayerB.AttachMasterData(SharedIronSwordData);
+
+        std::cout << "参照カウント: " << SharedIronSwordData.use_count() << std::endl; // 3
+
+        PlayerA.DetachMasterData();
+        std::cout << "参照カウント: " << SharedIronSwordData.use_count() << std::endl; // 2
+    } // ブロックスコープにより、PlayerA, PlayerB がメモリから破棄される
+
+    std::cout << "参照カウント: " << SharedIronSwordData.use_count() << std::endl; // 1
+
+}
+
 
 int main()
 {
@@ -133,7 +161,10 @@ int main()
     //PlayerEquipWeapon();
     //CheckWeaponPtr::UniquePtrTest();
 
-    GenerateModernAndLegacyClass();
+    // スマートポインタ関連
+    // GenerateModernAndLegacyClass();
+    TestSharedPointer();
+
 
 
 

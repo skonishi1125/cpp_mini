@@ -22,7 +22,6 @@ Weapon* ItemManager::SpawnWeapon(const std::string& Name, int Power)
 std::unique_ptr<Weapon> ItemManager::SpawnWeaponWithSP(const std::string& Name, int Power)
 {
 	// std::make_unique : 安全に std::unique_ptr を生成するための関数
-	//
 	return std::make_unique<Weapon>(Name, Power);
 
 	// 下記は文法誤り

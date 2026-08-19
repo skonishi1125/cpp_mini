@@ -2,9 +2,10 @@
 
 #include <memory>
 
+// Entities/Player クラスの前方宣言
 class Player;
 
-// 前方宣言 指定の名前空間 SModern にある Entity を使うと宣言。
+// 前方宣言 指定の名前空間 SModern にある Entity や Player を使うと宣言。
 // 呼ぶときは、SModern::Entity として呼ぶ
 namespace SModern
 {

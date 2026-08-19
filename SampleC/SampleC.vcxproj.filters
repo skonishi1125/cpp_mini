@@ -46,6 +46,8 @@
     <ClInclude Include="Core\Studies\SmartModelTest.h" />
     <ClInclude Include="Entities\Modern\Entity.h" />
     <ClInclude Include="Entities\Modern\Player.h" />
+    <ClInclude Include="Datas\WeaponData.h" />
+    <ClInclude Include="Datas\SharedPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -87,6 +89,8 @@
     <ClCompile Include="Core\Studies\SmartModelTest.cpp" />
     <ClCompile Include="Entities\Modern\Entity.cpp" />
     <ClCompile Include="Entities\Modern\Player.cpp" />
+    <ClCompile Include="Datas\WeaponData.cpp" />
+    <ClCompile Include="Datas\SharedPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
