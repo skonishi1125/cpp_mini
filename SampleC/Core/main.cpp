@@ -21,6 +21,7 @@
 // shared_ptr 学習用
 #include "Datas/SharedPlayer.h"
 #include "Datas/WeaponData.h"
+#include "Datas/SharedWeapon.h"
 
 namespace SModern
 {
@@ -150,6 +151,36 @@ void TestSharedPointer()
 
 } // SharedIronSwordData が消えて、参照カウンタが 0 となる
 
+void TestMasterDataArchWithSharedPointer()
+{
+    std::shared_ptr<WeaponData> IronSwordMasterData = std::make_shared<WeaponData>("鉄の剣", 10);
+    {
+        SharedPlayer PlayerA("勇者A");
+        SharedPlayer PlayerB("勇者B");
+
+        std::cout << "参照カウント: " << IronSwordMasterData.use_count() << std::endl; // 1
+
+        // 武器インスタンスデータ
+        // それぞれがマスタデータへの参照を持ちつつ、固有の耐久値や強化値を持つという設定
+        std::unique_ptr<SharedWeapon> SwordA = std::make_unique<SharedWeapon>(IronSwordMasterData);
+        std::unique_ptr<SharedWeapon> SwordB = std::make_unique<SharedWeapon>(IronSwordMasterData);
+
+        std::cout << "参照カウント: " << IronSwordMasterData.use_count() << std::endl; // 3
+
+        PlayerA.EquipWeapon(std::move(SwordA));
+        PlayerB.EquipWeapon(std::move(SwordB));
+
+        std::cout << "[鍛冶屋]" << PlayerA.GetName() << "の剣を強化します...\n";
+        PlayerA.GetEquippedSharedWeapon()->EnhanceWeapon();
+
+        std::cout << PlayerA.GetName() << " の攻撃力: " << PlayerA.GetEquippedSharedWeapon()->GetCalcuratedPower() << "\n";
+        std::cout << PlayerB.GetName() << " の攻撃力: " << PlayerB.GetEquippedSharedWeapon()->GetCalcuratedPower() << "\n";
+    }
+
+    std::cout << "参照カウント: " << IronSwordMasterData.use_count() << std::endl; // 1
+
+} // カウンタ 0 になり、IronSwordMasterData の メモリが解放される
+
 
 int main()
 {
@@ -163,7 +194,8 @@ int main()
 
     // スマートポインタ関連
     // GenerateModernAndLegacyClass();
-    TestSharedPointer();
+    //TestSharedPointer();
+    TestMasterDataArchWithSharedPointer();
 
 
 

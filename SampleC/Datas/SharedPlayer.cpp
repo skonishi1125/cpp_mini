@@ -1,12 +1,21 @@
 ﻿#include <iostream>
+#include <memory>
 
 #include "SharedPlayer.h"
+#include "SharedWeapon.h"
 #include "WeaponData.h"
 
 SharedPlayer::SharedPlayer(const std::string& InitName) : Name(InitName)
 {
 
 }
+
+void SharedPlayer::EquipWeapon(std::unique_ptr<SharedWeapon> NewWeapon)
+{
+	EquippedWeapon = std::move(NewWeapon);
+	std::cout << Name << " が " << EquippedWeapon->GetName() << "を装備。\n";
+}
+
 
 void SharedPlayer::AttachMasterData(std::shared_ptr<WeaponData> Data)
 {
