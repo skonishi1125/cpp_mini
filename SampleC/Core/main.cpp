@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 
 #include "Core/Studies/CheckInheritances.h"
 #include "Core/Studies/PassFunctions.h"
@@ -205,8 +206,9 @@ void TestBulletWithWeakPtr()
     {
         if (8 < frame)
         {
-            ActiveMonsters.clear();
-            Slime.reset();// スライムが倒されたと想定
+            // スライムが倒されたと想定
+            std::erase(ActiveMonsters, Slime); // リストから消して
+            Slime.reset(); // メモリとしても解放
         }
         MagicBall->Update();
     }
