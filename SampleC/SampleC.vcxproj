@@ -25,6 +25,7 @@
     <ClInclude Include="Core\Studies\CheckWeaponPtr.h" />
     <ClInclude Include="Core\Studies\PassFunctions.h" />
     <ClInclude Include="Core\Studies\SmartModelTest.h" />
+    <ClInclude Include="Datas\Bullet.h" />
     <ClInclude Include="Datas\SharedPlayer.h" />
     <ClInclude Include="Datas\SharedWeapon.h" />
     <ClInclude Include="Datas\WeaponData.h" />
@@ -53,6 +54,7 @@
     <ClCompile Include="Core\Studies\CheckWeaponPtr.cpp" />
     <ClCompile Include="Core\Studies\PassFunctions.cpp" />
     <ClCompile Include="Core\Studies\SmartModelTest.cpp" />
+    <ClCompile Include="Datas\Bullet.cpp" />
     <ClCompile Include="Datas\SharedPlayer.cpp" />
     <ClCompile Include="Datas\SharedWeapon.cpp" />
     <ClCompile Include="Datas\WeaponData.cpp" />

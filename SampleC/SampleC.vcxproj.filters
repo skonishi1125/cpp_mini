@@ -49,6 +49,7 @@
     <ClInclude Include="Datas\WeaponData.h" />
     <ClInclude Include="Datas\SharedPlayer.h" />
     <ClInclude Include="Datas\SharedWeapon.h" />
+    <ClInclude Include="Datas\Bullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
@@ -93,6 +94,7 @@
     <ClCompile Include="Datas\WeaponData.cpp" />
     <ClCompile Include="Datas\SharedPlayer.cpp" />
     <ClCompile Include="Datas\SharedWeapon.cpp" />
+    <ClCompile Include="Datas\Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

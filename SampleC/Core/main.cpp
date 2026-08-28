@@ -26,7 +26,11 @@
 namespace SModern
 {
     class Player;
+    class Entity;
 }
+
+#include "Entities/Modern/Entity.h"
+#include "Datas/Bullet.h"
 
 
 // 関数系は main() よりも手前に書く
@@ -181,6 +185,32 @@ void TestMasterDataArchWithSharedPointer()
 
 } // カウンタ 0 になり、IronSwordMasterData の メモリが解放される
 
+void TestBulletWithWeakPtr()
+{
+    // 敵の配列（本来は Manager などで管理する）
+    std::vector<std::shared_ptr<SModern::Entity>> ActiveMonsters;
+
+    auto Slime = std::make_shared<SModern::Entity>("スライム", 10);
+    auto Wolf = std::make_shared<SModern::Entity>("ウルフ", 15);
+
+    ActiveMonsters.push_back(Slime);
+    ActiveMonsters.push_back(Wolf);
+
+    // 魔法使いが、MagicBall という Bullet クラスをベースにした魔法の弾丸を打つというイメージ
+    std::unique_ptr<Bullet> MagicBall = std::make_unique<Bullet>();
+    MagicBall->SetTarget(Slime);
+
+    // ゲームループを疑似的に for で再現
+    for (auto frame = 1; frame <= 10; frame++)
+    {
+        if (8 < frame)
+        {
+            ActiveMonsters.clear();
+            Slime.reset();// スライムが倒されたと想定
+        }
+        MagicBall->Update();
+    }
+}
 
 int main()
 {
@@ -195,8 +225,9 @@ int main()
     // スマートポインタ関連
     // GenerateModernAndLegacyClass();
     //TestSharedPointer();
-    TestMasterDataArchWithSharedPointer();
+    //TestMasterDataArchWithSharedPointer();
 
+    TestBulletWithWeakPtr();
 
 
 
